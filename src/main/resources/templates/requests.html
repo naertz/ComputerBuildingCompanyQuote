@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="#">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Computer Building Company - Customer Quote Request List</title>
+    </head>
+    <body>
+        <div class="container my-2">
+            <h1>Customer Quote Requests</h1>
+            <a th:href = "@{/create_request}" class="btn btn-primary btm-sm mb-3">Create a new quote request</a>
+            <table border="1" class="table table-striped table-responsive-md">
+                <thead>
+                    <tr>
+                        <th>
+                            <a th:href="@{'/request_page/' + ${requestPage} + '?sortField=id&sortDirection=' + ${reverseSortDirection}}">ID</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/request_page/' + ${requestPage} + '?sortField=firstName&sortDirection=' + ${reverseSortDirection}}">First Name</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/request_page/' + ${requestPage} + '?sortField=lastName&sortDirection=' + ${reverseSortDirection}}">Last Name</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/request_page/' + ${requestPage} + '?sortField=email&sortDirection=' + ${reverseSortDirection}}">Email</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/request_page/' + ${requestPage} + '?sortField=phoneNumber&sortDirection=' + ${reverseSortDirection}}">Phone Number</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/request_page/' + ${requestPage} + '?sortField=computerNeedsDescription&sortDirection=' + ${reverseSortDirection}}">Computer Needs</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/request_page/' + ${requestPage} + '?sortField=budget&sortDirection=' + ${reverseSortDirection}}">Budget</a>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="customerQuoteRequest: ${customerQuoteRequests}">
+                        <td th:text="${customerQuoteRequest.id}">
+                        <td th:text="${customerQuoteRequest.firstName}">
+                        <td th:text="${customerQuoteRequest.lastName}">
+                        <td th:text="${customerQuoteRequest.email}">
+                        <td th:text="${customerQuoteRequest.phoneNumber}">
+                        <td th:text="${customerQuoteRequest.computerNeedsDescription}">
+                        <td th:text="${customerQuoteRequest.budget}"></td>
+                        <td>
+                            <a th:href="@{/edit_request/{id}(id=${customerQuoteRequest.id})}" class="btn btn-primary">Edit</a>
+                            <a th:href="@{/delete_request/{id}(id=${customerQuoteRequest.id})}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div th:if="${totalRequestPages > 1}">
+                <div class="row col-sm-10">
+                    <div class="col-sm-2">
+                        Total Requests: [[${totalRequestItems}]]
+                    </div>
+                    <div class="col-sm-1">
+                        <span th:each="i: ${#numbers.sequence(1, totalRequestPages)}">
+                            <a th:if="${requestPage != i}" th:href="@{'/request_page/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">[[${i}]]</a>
+                            <span th:unless="${requestPage != i}">[[${i}]]</span>&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${requestPage < totalRequestPages}" th:href="@{'/request_page/' + ${requestPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Next</a>
+                        <span th:unless="${requestPage < totalRequestPages}">Next</span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${requestPage < totalRequestPages}" th:href="@{'/request_page/' + ${totalRequestPages} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Last</a>
+                        <span th:unless="${requestPage < totalRequestPages}">Last</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
