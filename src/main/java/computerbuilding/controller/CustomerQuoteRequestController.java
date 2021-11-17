@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import computerbuilding.beans.CustomerQuoteRequest;
-import computerbuilding.service.CustomerQuoteRequestService;
+import computerbuilding.service.CustomerQuoteRequestServiceInterface;
 
 @Controller
 public class CustomerQuoteRequestController {
 	@Autowired
-	CustomerQuoteRequestService customerQuoteRequestService;
+	CustomerQuoteRequestServiceInterface customerQuoteRequestService;
 
 	@GetMapping("/")
 	public String viewHomePage(Model model) {
