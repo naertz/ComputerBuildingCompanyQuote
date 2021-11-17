@@ -27,7 +27,7 @@ import lombok.ToString;
 @Table(name="customer_quote_request")
 public class CustomerQuoteRequest {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="customer_quote_request_id")
 	private long id;
 	@NonNull
