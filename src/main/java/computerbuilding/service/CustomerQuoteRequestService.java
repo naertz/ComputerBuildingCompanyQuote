@@ -3,6 +3,7 @@
  * CIS-175 - Fall 2021
  * Nov 16, 2021
  */
+
 package computerbuilding.service;
 
 import java.util.List;
@@ -56,5 +57,4 @@ public class CustomerQuoteRequestService implements CustomerQuoteRequestServiceI
 		Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
 		return this.customerQuoteRequestRepository.findAll(pageable);
 	}
-
 }
