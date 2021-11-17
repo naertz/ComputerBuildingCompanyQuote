@@ -9,7 +9,8 @@
     <body>
         <div class="container my-2">
             <h1>Customer Quote Requests</h1>
-            <a th:href = "@{/create_request}" class="btn btn-primary btm-sm mb-3">Create a new quote request</a>
+            <a th:href="@{/create_request}" class="btn btn-primary btn-sm mb-3">Create a new quote request</a>
+            <a th:href="@{/motherboards}" class="btn btn-secondary btn-sm mb-3">Motherboards</a>
             <table border="1" class="table table-striped table-responsive-md">
                 <thead>
                     <tr>
@@ -39,12 +40,12 @@
                 </thead>
                 <tbody>
                     <tr th:each="customerQuoteRequest: ${customerQuoteRequests}">
-                        <td th:text="${customerQuoteRequest.id}">
-                        <td th:text="${customerQuoteRequest.firstName}">
-                        <td th:text="${customerQuoteRequest.lastName}">
-                        <td th:text="${customerQuoteRequest.email}">
-                        <td th:text="${customerQuoteRequest.phoneNumber}">
-                        <td th:text="${customerQuoteRequest.computerNeedsDescription}">
+                        <td th:text="${customerQuoteRequest.id}"></td>
+                        <td th:text="${customerQuoteRequest.firstName}"></td>
+                        <td th:text="${customerQuoteRequest.lastName}"></td>
+                        <td th:text="${customerQuoteRequest.email}"></td>
+                        <td th:text="${customerQuoteRequest.phoneNumber}"></td>
+                        <td th:text="${customerQuoteRequest.computerNeedsDescription}"></td>
                         <td th:text="${customerQuoteRequest.budget}"></td>
                         <td>
                             <a th:href="@{/edit_request/{id}(id=${customerQuoteRequest.id})}" class="btn btn-primary">Edit</a>

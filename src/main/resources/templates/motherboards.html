@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="#">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Computer Building Company - Motherboard List</title>
+    </head>
+    <body>
+        <div class="container my-2">
+            <h1>Motherboards</h1>
+            <a th:href="@{/}" class="btn btn-primary btn-sm mb-3">View quote requests</a>
+            <a th:href="@{/motherboards/add_motherboard}" class="btn btn-dark btn-sm mb-3">Add a motherboard</a>
+            <table border="1" class="table table-striped table-responsive-md">
+                <thead>
+                    <tr>
+                        <th>
+                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=id&sortDirection=' + ${reverseSortDirection}}">ID</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=name&sortDirection=' + ${reverseSortDirection}}">Name</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=formFactor&sortDirection=' + ${reverseSortDirection}}">Form Factor</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=socket&sortDirection=' + ${reverseSortDirection}}">Socket</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=chipset&sortDirection=' + ${reverseSortDirection}}">Chipset</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=memorySlots&sortDirection=' + ${reverseSortDirection}}">Memory Slots</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=pcieSlots&sortDirection=' + ${reverseSortDirection}}">PCI-E Slots</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=sataPorts&sortDirection=' + ${reverseSortDirection}}">SATA Ports</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=m2Slots&sortDirection=' + ${reverseSortDirection}}">M.2 Slots</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=price&sortDirection=' + ${reverseSortDirection}}">Price</a>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="motherboard: ${motherboards}">
+                        <td th:text="${motherboard.id}"></td>
+                        <td th:text="${motherboard.name}"></td>
+                        <td th:text="${motherboard.formFactor}"></td>
+                        <td th:text="${motherboard.socket}"></td>
+                        <td th:text="${motherboard.chipset}"></td>
+                        <td th:text="${motherboard.memorySlots}"></td>
+                        <td th:text="${motherboard.pcieSlots}"></td>
+                        <td th:text="${motherboard.sataPorts}"></td>
+                        <td th:text="${motherboard.m2Slots}"></td>
+                        <td th:text="${motherboard.price}"></td>
+                        <td>
+                            <a th:href="@{/motherboards/edit_motherboard/{id}(id=${motherboard.id})}" class="btn btn-primary">Edit</a>
+                            <a th:href="@{/motherboards/delete_motherboard/{id}(id=${motherboard.id})}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div th:if="${totalMotherboardPages > 1}">
+                <div class="row col-sm-10">
+                    <div class="col-sm-2">
+                        Total Motherboards: [[${totalMotherboardItems}]]
+                    </div>
+                    <div class="col-sm-1">
+                        <span th:each="i: ${#numbers.sequence(1, totalMotherboardPages)}">
+                            <a th:if="${motherboardPage != i}" th:href="@{'/motherboards/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">[[${i}]]</a>
+                            <span th:unless="${motherboardPage != i}">[[${i}]]</span>&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${motherboardPage < totalMotherboardPages}" th:href="@{'/motherboards/page/' + ${motherboardPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Next</a>
+                        <span th:unless="${motherboardPage < totalMotherboardPages}">Next</span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${motherboardPage < totalMotherboardPages}" th:href="@{'/motherboards/page/' + ${totalMotherboardPages} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Last</a>
+                        <span th:unless="${motherboardPage < totalMotherboardPages}">Last</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
