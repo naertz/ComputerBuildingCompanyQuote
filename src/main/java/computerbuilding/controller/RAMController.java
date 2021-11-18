@@ -12,42 +12,42 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import computerbuilding.beans.Ram;
-import computerbuilding.service.RamServiceInterface;
+import computerbuilding.beans.RAM;
+import computerbuilding.service.RAMServiceInterface;
 
 @Controller
-public class RamController {
+public class RAMController {
 	@Autowired
-	RamServiceInterface ramService;
-	
+	RAMServiceInterface rAMService;
+
 	@GetMapping("/ram")
-	public String viewRamPage(Model model) {
+	public String viewRAMPage(Model model) {
 		return findPaginated(1, "name", "asc", model);
 	}
 
 	@GetMapping("/ram/add_ram")
-	public String addRam(Model model) {
-		Ram ram  = new Ram();
-		model.addAttribute("ram", ram);
+	public String addRAM(Model model) {
+		RAM rAM  = new RAM();
+		model.addAttribute("rAM", rAM);
 		return "new_ram";
 	}
 
 	@PostMapping("/ram/update_ram")
-	public String updateRam(@ModelAttribute("ram") Ram ram) {
-		ramService.updateRam(ram);
+	public String updateRAM(@ModelAttribute("rAM") RAM rAM) {
+		rAMService.updateRAM(rAM);
 		return "redirect:/ram";
 	}
 
 	@GetMapping("/ram/edit_ram/{id}")
-	public String editRam(@PathVariable(value="id") long id, Model model) {
-		Ram ram = ramService.getRamById(id);
-		model.addAttribute("ram", ram);
+	public String editRAM(@PathVariable(value="id") long id, Model model) {
+		RAM rAM = rAMService.getRAMById(id);
+		model.addAttribute("rAM", rAM);
 		return "edit_ram";
 	}
 
 	@GetMapping("/ram/delete_ram/{id}")
-	public String deleteRam(@PathVariable(value="id") long id) {
-		this.ramService.deleteRamById(id);
+	public String deleteRAM(@PathVariable(value="id") long id) {
+		this.rAMService.deleteRAMById(id);
 		return "redirect:/ram";
 	}
 
@@ -55,18 +55,18 @@ public class RamController {
 	public String findPaginated(@PathVariable(value="pageNumber") int pageNumber, @RequestParam("sortField") String sortField, @RequestParam("sortDirection") String sortDirection, Model model) {
 		int pageSize = 5;
 
-		Page<Ram> ramPage = ramService.findPaginated(pageNumber, pageSize, sortField, sortDirection);
-		List<Ram> ram = ramPage.getContent();
+		Page<RAM> rAMPage = rAMService.findPaginated(pageNumber, pageSize, sortField, sortDirection);
+		List<RAM> rAM = rAMPage.getContent();
 
-		model.addAttribute("ramPage", pageNumber);
-		model.addAttribute("totalRamPages", ramPage.getTotalPages());
-		model.addAttribute("totalRamItems", ramPage.getTotalElements());
+		model.addAttribute("rAMPage", pageNumber);
+		model.addAttribute("totalRAMPages", rAMPage.getTotalPages());
+		model.addAttribute("totalRAMItems", rAMPage.getTotalElements());
 
 		model.addAttribute("sortField", sortField);
 		model.addAttribute("sortDirection", sortDirection);
 		model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
 
-		model.addAttribute("ram", ram);
+		model.addAttribute("rAM", rAM);
 		return "ram";
 	}
 }

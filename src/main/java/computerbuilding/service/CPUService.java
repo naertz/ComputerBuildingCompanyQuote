@@ -1,10 +1,11 @@
-package computerbuilding.service;
-
 /**
  *@author Jake Soulinthavong - jakesoul
  *CIS175 - Fall 2021
  *September 23, 2021
  */
+
+package computerbuilding.service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -21,39 +22,39 @@ import computerbuilding.repository.CPURepository;
 @Service
 public class CPUService implements CPUServiceInterface {
 	@Autowired
-	private CPURepository cpuRepository;
+	private CPURepository cPURepository;
 
 	@Override
 	public List<CPU> getAllCPUs() {
-		return cpuRepository.findAll();
+		return cPURepository.findAll();
 	}
 
 	@Override
 	public void updateCPU(CPU cpu) {
-		this.cpuRepository.save(cpu);
+		this.cPURepository.save(cpu);
 	}
 
 	@Override
 	public CPU getCPUById(long id) {
-		Optional<CPU> optional = cpuRepository.findById(id);
-		CPU cpu = null;
+		Optional<CPU> optional = cPURepository.findById(id);
+		CPU cPU = null;
 		if (optional.isPresent()) {
-			cpu = optional.get();
+			cPU = optional.get();
 		} else {
 			throw new RuntimeException("CPU not found for id: " + id);
 		}
-		return cpu;
+		return cPU;
 	}
 
 	@Override
 	public void deleteCPUById(long id) {
-		this.cpuRepository.deleteById(id);
+		this.cPURepository.deleteById(id);
 	}
 
 	@Override
 	public Page<CPU> findPaginated(int pageNumber, int pageSize, String sortField, String sortDirection) {
 		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
 		Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-		return this.cpuRepository.findAll(pageable);
+		return this.cPURepository.findAll(pageable);
 	}
 }

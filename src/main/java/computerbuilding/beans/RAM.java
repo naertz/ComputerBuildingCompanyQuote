@@ -19,7 +19,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name="ram")
-public class Ram {
+public class RAM {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ram_id")
@@ -38,6 +38,7 @@ public class Ram {
 	private String capacity;
 	@Column(name="sticks")
 	private int sticks;
+	@NonNull
 	@Column(name="latency")
 	private String latency;
 	@Column(name="price")

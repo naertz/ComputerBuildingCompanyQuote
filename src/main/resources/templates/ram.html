@@ -4,79 +4,80 @@
         <meta charset="UTF-8">
         <link rel="icon" href="#">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-        <title>Computer Building Company - Ram List</title>
+        <title>Computer Building Company - RAM List</title>
     </head>
     <body>
         <div class="container my-2">
-            <h1>Ram</h1>
+            <h1>RAM</h1>
             <a th:href="@{/}" class="btn btn-primary btn-sm mb-3">View quote requests</a>
 			<a th:href="@{/motherboards}" class="btn btn-secondary btn-sm mb-3">Motherboards</a>
-            <a th:href="@{/ram/add_ram}" class="btn btn-dark btn-sm mb-3">Add ram</a>
+			<a th:href="@{/cpus}" class="btn btn-secondary btn-sm mb-3">CPUs</a>
+            <a th:href="@{/ram/add_ram}" class="btn btn-dark btn-sm mb-3">Add RAM</a>
             <table border="1" class="table table-striped table-responsive-md">
                 <thead>
                     <tr>
                         <th>
-                            <a th:href="@{'/ram/page/' + ${ramPage} + '?sortField=id&sortDirection=' + ${reverseSortDirection}}">ID</a>
+                            <a th:href="@{'/ram/page/' + ${rAMPage} + '?sortField=id&sortDirection=' + ${reverseSortDirection}}">ID</a>
                         </th>
                         <th>
-                            <a th:href="@{'/ram/page/' + ${ramPage} + '?sortField=name&sortDirection=' + ${reverseSortDirection}}">Name</a>
+                            <a th:href="@{'/ram/page/' + ${rAMPage} + '?sortField=name&sortDirection=' + ${reverseSortDirection}}">Name</a>
                         </th>
                         <th>
-                            <a th:href="@{'/ram/page/' + ${ramPage} + '?sortField=generation&sortDirection=' + ${reverseSortDirection}}">Generation</a>
+                            <a th:href="@{'/ram/page/' + ${rAMPage} + '?sortField=generation&sortDirection=' + ${reverseSortDirection}}">Generation</a>
                         </th>
                         <th>
-                            <a th:href="@{'/ram/page/' + ${ramPage} + '?sortField=speed&sortDirection=' + ${reverseSortDirection}}">Speed</a>
+                            <a th:href="@{'/ram/page/' + ${rAMPage} + '?sortField=speed&sortDirection=' + ${reverseSortDirection}}">Speed</a>
                         </th>
                         <th>
-                            <a th:href="@{'/ram/page/' + ${ramPage} + '?sortField=capacity&sortDirection=' + ${reverseSortDirection}}">Capacity</a>
+                            <a th:href="@{'/ram/page/' + ${rAMPage} + '?sortField=capacity&sortDirection=' + ${reverseSortDirection}}">Capacity</a>
                         </th>
                         <th>
-                            <a th:href="@{'/ram/page/' + ${ramPage} + '?sortField=sticks&sortDirection=' + ${reverseSortDirection}}">Sticks</a>
+                            <a th:href="@{'/ram/page/' + ${rAMPage} + '?sortField=sticks&sortDirection=' + ${reverseSortDirection}}">Sticks</a>
                         </th>
                         <th>
-                            <a th:href="@{'/ram/page/' + ${ramPage} + '?sortField=latency&sortDirection=' + ${reverseSortDirection}}">Latency</a>
+                            <a th:href="@{'/ram/page/' + ${rAMPage} + '?sortField=latency&sortDirection=' + ${reverseSortDirection}}">Latency</a>
                         </th>
                         <th>
-                            <a th:href="@{'/ram/page/' + ${ramPage} + '?sortField=price&sortDirection=' + ${reverseSortDirection}}">Price</a>
+                            <a th:href="@{'/ram/page/' + ${rAMPage} + '?sortField=price&sortDirection=' + ${reverseSortDirection}}">Price</a>
                         </th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="ram: ${ram}">
-                        <td th:text="${ram.id}"></td>
-                        <td th:text="${ram.name}"></td>
-                        <td th:text="${ram.generation}"></td>
-                        <td th:text="${ram.speed}"></td>
-                        <td th:text="${ram.capacity}"></td>
-                        <td th:text="${ram.sticks}"></td>
-                        <td th:text="${ram.latency}"></td>
-                        <td th:text="${ram.price}"></td>
+                    <tr th:each="rAM: ${rAM}">
+                        <td th:text="${rAM.id}"></td>
+                        <td th:text="${rAM.name}"></td>
+                        <td th:text="${rAM.generation}"></td>
+                        <td th:text="${rAM.speed}"></td>
+                        <td th:text="${rAM.capacity}"></td>
+                        <td th:text="${rAM.sticks}"></td>
+                        <td th:text="${rAM.latency}"></td>
+                        <td th:text="${rAM.price}"></td>
                         <td>
-                            <a th:href="@{/ram/edit_ram/{id}(id=${ram.id})}" class="btn btn-primary">Edit</a>
-                            <a th:href="@{/ram/delete_ram/{id}(id=${ram.id})}" class="btn btn-danger">Delete</a>
+                            <a th:href="@{/ram/edit_ram/{id}(id=${rAM.id})}" class="btn btn-primary">Edit</a>
+                            <a th:href="@{/ram/delete_ram/{id}(id=${rAM.id})}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div th:if="${totalramPages > 1}">
+            <div th:if="${totalRAMPages > 1}">
                 <div class="row col-sm-10">
                     <div class="col-sm-2">
-                        Total Ram: [[${totalRamItems}]]
+                        Total RAM: [[${totalRAMItems}]]
                     </div>
                     <div class="col-sm-1">
-                        <span th:each="i: ${#numbers.sequence(1, totalRamPages)}">
-                            <a th:if="${RamPage != i}" th:href="@{'/ram/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">[[${i}]]</a>
-                            <span th:unless="${ramPage != i}">[[${i}]]</span>&nbsp;&nbsp;
+                        <span th:each="i: ${#numbers.sequence(1, totalRAMPages)}">
+                            <a th:if="${rAMPage != i}" th:href="@{'/ram/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">[[${i}]]</a>
+                            <span th:unless="${rAMPage != i}">[[${i}]]</span>&nbsp;&nbsp;
                         </span>
                     </div>
                     <div class="col-sm-1">
-                        <a th:if="${ramPage < totalRamPages}" th:href="@{'/ram/page/' + ${ramPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Next</a>
-                        <span th:unless="${ramPage < totalRamPages}">Next</span>
+                        <a th:if="${rAMPage < totalRAMPages}" th:href="@{'/ram/page/' + ${rAMPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Next</a>
+                        <span th:unless="${rAMPage < totalRAMPages}">Next</span>
                     </div>
                     <div class="col-sm-1">
-                        <a th:if="${ramPage < totalRamPages}" th:href="@{'/ram/page/' + ${totalramPages} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Last</a>
-                        <span th:unless="${ramPage < totalRamPages}">Last</span>
+                        <a th:if="${rAMPage < totalRAMPages}" th:href="@{'/ram/page/' + ${totalRAMPages} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Last</a>
+                        <span th:unless="${rAMPage < totalRAMPages}">Last</span>
                     </div>
                 </div>
             </div>

@@ -38,13 +38,13 @@ public class CPU {
 	private String brand;
 	@NonNull
 	@Column(name="cpu_socket")
-	private String cpuSocket;
+	private String cPUSocket;
 	@Column(name="core_count")
 	private int coreCount;
 	@Column(name="thread_count")
 	private int threadCount;
 	@Column(name="cpu_speed")
-	private double cpuSpeed;
+	private double cPUSpeed;
 	@Column(name="price")
 	private double price;
 }
