@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="container">
-            <h1>Computer Building Company - Customer Quote Request From</h1>
+            <h1>Computer Building Company - Customer Quote Request Form</h1>
             <h2>Enter your computer needs, and we will provide you a quote for a computer we'll build for you!</h2>
             <form th:object="${customerQuoteRequest}" th:action="@{/update_request}" method="POST">
                 <input class="form-control mb-4 col-4" type="text" name="firstName" placeholder="First Name" size="32" th:field="*{firstName}">
