@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="#">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Computer Building Company - Confirm Customer Quote Fulfillment</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Computer Building Company - Confirm Customer Quote Fulfillment</h1>
+            <h2>Your quote is ready! You may accept or decline the quote.</h2>
+            <form th:object="${customerQuoteFulfillment}" th:action="@{/fulfillments/update_fulfillment}" method="POST">
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{customerQuoteRequest.id}">
+                <input type="hidden" th:field="*{motherboard.id}">
+                <input type="hidden" th:field="*{cPU.id}">
+                <input type="hidden" th:field="*{rAM.id}">
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Computer Needs</th>
+                            <th>Budget</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td th:text="*{customerQuoteRequest.id}"></td>
+                            <td th:text="*{customerQuoteRequest.firstName}"></td>
+                            <td th:text="*{customerQuoteRequest.lastName}"></td>
+                            <td th:text="*{customerQuoteRequest.email}"></td>
+                            <td th:text="*{customerQuoteRequest.phoneNumber}"></td>
+                            <td th:text="*{customerQuoteRequest.computerNeedsDescription}"></td>
+                            <td th:text="*{customerQuoteRequest.budget}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Form Factor</th>
+                            <th>Socket</th>
+                            <th>Chipset</th>
+                            <th>Memory Slots</th>
+                            <th>PCI-E Slots</th>
+                            <th>SATA Ports</th>
+                            <th>M.2 Slots</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td th:text="*{motherboard.id}"></td>
+                            <td th:text="*{motherboard.name}"></td>
+                            <td th:text="*{motherboard.formFactor}"></td>
+                            <td th:text="*{motherboard.socket}"></td>
+                            <td th:text="*{motherboard.chipset}"></td>
+                            <td th:text="*{motherboard.memorySlots}"></td>
+                            <td th:text="*{motherboard.pcieSlots}"></td>
+                            <td th:text="*{motherboard.sataPorts}"></td>
+                            <td th:text="*{motherboard.m2Slots}"></td>
+                            <td th:text="*{motherboard.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>CPU Socket</th>
+                            <th>Core Count</th>
+                            <th>Thread Count</th>
+                            <th>CPU Speed</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td th:text="*{cPU.id}"></td>
+                            <td th:text="*{cPU.name}"></td>
+                            <td th:text="*{cPU.brand}"></td>
+                            <td th:text="*{cPU.cPUSocket}"></td>
+                            <td th:text="*{cPU.coreCount}"></td>
+                            <td th:text="*{cPU.threadCount}"></td>
+                            <td th:text="*{cPU.cPUSpeed}"></td>
+                            <td th:text="*{cPU.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Generation</th>
+                            <th>Speed</th>
+                            <th>Capacity</th>
+                            <th>Sticks</th>
+                            <th>Latency</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td th:text="*{rAM.id}"></td>
+                            <td th:text="*{rAM.name}"></td>
+                            <td th:text="*{rAM.generation}"></td>
+                            <td th:text="*{rAM.speed}"></td>
+                            <td th:text="*{rAM.capacity}"></td>
+                            <td th:text="*{rAM.sticks}"></td>
+                            <td th:text="*{rAM.latency}"></td>
+                            <td th:text="*{rAM.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>Total Cost</th>
+                            <th>Confirm?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td th:text="*{totalCost}"></td>
+                            <td>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-secondary">
+                                        <input type="radio" name="customerConfirmation" th:field="*{customerConfirmation}" th:value="true">Accept
+                                    </label>
+                                    <label class="btn btn-secondary">
+                                        <input type="radio" name="customerConfirmation" th:field="*{customerConfirmation}" th:value="false">Decline
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn btn-success col-2" type="submit">Submit Quote Fulfillment</button>
+            </form>
+            <a th:href="@{/fulfillments}">View Current Quote Fulfillments</a>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    </body>
+</html>

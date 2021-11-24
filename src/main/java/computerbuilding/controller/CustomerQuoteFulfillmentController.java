@@ -61,6 +61,13 @@ public class CustomerQuoteFulfillmentController {
 		return "redirect:/fulfillments";
 	}
 
+	@GetMapping("/fulfillments/confirm_fulfillment/{id}")
+	public String confirmCustomerQuoteFulfillment(@PathVariable(value="id") long id, Model model) {
+		CustomerQuoteFulfillment customerQuoteFulfillment = customerQuoteFulfillmentService.getCustomerQuoteFulfillmentById(id);
+		model.addAttribute("customerQuoteFulfillment", customerQuoteFulfillment);
+		return "confirm_fulfillment";
+	}
+
 	@GetMapping("/fulfillments/edit_fulfillment/{id}")
 	public String editCustomerQuoteFulfillment(@PathVariable(value="id") long id, Model model) {
 		CustomerQuoteFulfillment customerQuoteFulfillment = customerQuoteFulfillmentService.getCustomerQuoteFulfillmentById(id);

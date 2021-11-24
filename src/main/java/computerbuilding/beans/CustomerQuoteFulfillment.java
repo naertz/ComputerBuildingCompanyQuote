@@ -51,4 +51,6 @@ public class CustomerQuoteFulfillment {
 	private RAM rAM;
 	@Column(name="total_cost")
 	private double totalCost;
+	@Column(name="customer_confirmation")
+	private Boolean customerConfirmation;
 }
