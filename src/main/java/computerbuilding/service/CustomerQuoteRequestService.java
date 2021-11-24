@@ -48,7 +48,7 @@ public class CustomerQuoteRequestService implements CustomerQuoteRequestServiceI
 
 	@Override
 	public void deleteCustomerQuoteRequestById(long id) {
-			this.customerQuoteRequestRepository.deleteById(id);
+		this.customerQuoteRequestRepository.deleteById(id);
 	}
 
 	@Override
