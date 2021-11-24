@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -35,7 +34,7 @@ public class CustomerQuoteFulfillment {
 	@Column(name="customer_quote_fulfillment_id")
 	private long id;
 	@NonNull
-	@OneToOne(targetEntity=CustomerQuoteRequest.class, fetch=FetchType.LAZY)
+	@ManyToOne(targetEntity=CustomerQuoteRequest.class, fetch=FetchType.LAZY)
 	@JoinColumn(name="customer_quote_request_id_fk", referencedColumnName="customer_quote_request_id")
 	private CustomerQuoteRequest customerQuoteRequest;
 	@NonNull
