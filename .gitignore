@@ -37,3 +37,6 @@ application.properties
 
 ### class ###
 .class
+
+### bin ###
+bin/

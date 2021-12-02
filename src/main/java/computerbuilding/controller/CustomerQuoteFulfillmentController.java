@@ -22,6 +22,7 @@ import computerbuilding.beans.CustomerQuoteFulfillment;
 import computerbuilding.service.CPUServiceInterface;
 import computerbuilding.service.CustomerQuoteFulfillmentServiceInterface;
 import computerbuilding.service.CustomerQuoteRequestServiceInterface;
+import computerbuilding.service.GPUServiceInterface;
 import computerbuilding.service.MotherboardServiceInterface;
 import computerbuilding.service.RAMServiceInterface;
 
@@ -37,7 +38,8 @@ public class CustomerQuoteFulfillmentController {
 	CPUServiceInterface cPUService;
 	@Autowired
 	RAMServiceInterface rAMService;
-
+	@Autowired
+	GPUServiceInterface gPUService;
 
 	@GetMapping("/fulfillments")
 	public String viewFulfillmentsPage(Model model) {
@@ -52,6 +54,7 @@ public class CustomerQuoteFulfillmentController {
 		model.addAttribute("motherboards", motherboardService.getAllMotherboards());
 		model.addAttribute("cPUS", cPUService.getAllCPUs());
 		model.addAttribute("rAM", rAMService.getAllRAM());
+		model.addAttribute("gPUS", gPUService.getAllGPUs());
 		return "new_fulfillment";
 	}
 
@@ -76,6 +79,7 @@ public class CustomerQuoteFulfillmentController {
 		model.addAttribute("motherboards", motherboardService.getAllMotherboards());
 		model.addAttribute("cPUS", cPUService.getAllCPUs());
 		model.addAttribute("rAM", rAMService.getAllRAM());
+		model.addAttribute("gPUS", gPUService.getAllGPUs());
 		return "edit_fulfillment";
 	}
 
