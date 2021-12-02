@@ -117,6 +117,32 @@
                         </tr>
                     </tbody>
                 </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Memory Type</th>
+                            <th>Video Memory</th>
+                            <th>PCIE Express</th>
+                            <th>Clock Speed</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="gPU: ${gPUS}">
+                            <td><input type="radio" name="gPUS" th:field="*{gPU.id}" th:value="${gPU.id}"></td>
+                            <td th:text="${gPU.name}"></td>
+                            <td th:text="${gPU.brand}"></td>
+                            <td th:text="${gPU.memoryType}"></td>
+                            <td th:text="${gPU.videoMemory}"></td>
+                            <td th:text="${gPU.pcieExpress}"></td>
+                            <td th:text="${gPU.clockSpeed}"></td>
+                            <td th:text="${gPU.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
                 <input class="form-control mb-4 col-4" type="text" name="totalCost" placeholder="Total Cost" size="8" th:field="*{totalCost}">
                 <button class="btn btn-info col-2" type="submit">Submit Quote Fulfillment</button>
             </form>
