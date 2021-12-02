@@ -49,6 +49,10 @@ public class CustomerQuoteFulfillment {
 	@ManyToOne(targetEntity=RAM.class, fetch=FetchType.LAZY)
 	@JoinColumn(name="ram_id_fk", referencedColumnName="ram_id")
 	private RAM rAM;
+	@NonNull
+	@ManyToOne(targetEntity=GPU.class, fetch=FetchType.LAZY)
+	@JoinColumn(name="gpu_id_fk", referencedColumnName="gpu_id")
+	private GPU gPU;
 	@Column(name="total_cost")
 	private double totalCost;
 	@Column(name="customer_confirmation")
