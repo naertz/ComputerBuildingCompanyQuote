@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="#">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Computer Building Company - Thermal Compound List</title>
+    </head>
+    <body>
+        <div class="container my-2">
+            <h1>ThComp</h1>
+            <a th:href="@{/}" class="btn btn-primary btn-sm mb-3">View quote requests</a>
+			<a th:href="@{/motherboards}" class="btn btn-secondary btn-sm mb-3">Motherboards</a>
+			<a th:href="@{/cpus}" class="btn btn-secondary btn-sm mb-3">CPUs</a>
+            <a th:href="@{/ram/add_ram}" class="btn btn-dark btn-sm mb-3">Add RAM</a>
+            <a th:href="@{/gpus}" class="btn btn-secondary btn-sm mb-3">GPU</a>
+            <a th:href="@{/thcomps}" class="btn btn-secondary btn-sm mb-3">Add Thermal Compounds</a>
+            <a th:href="@{/fulfillments}" class="btn btn-primary btn-sm mb-3">View quote fulfillments</a>
+            <table border="1" class="table table-striped table-responsive-md">
+                <thead>
+                    <tr>
+                        <th>
+                            <a th:href="@{'/thcomps/page/' + ${thcompPage} + '?sortField=id&sortDirection=' + ${reverseSortDirection}}">ID</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/thcomps/page/' + ${thcompPage} + '?sortField=name&sortDirection=' + ${reverseSortDirection}}">Name</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/thcomps/page/' + ${thcompPage} + '?sortField=amount&sortDirection=' + ${reverseSortDirection}}">Amount</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/thcomps/page/' + ${thcompPage} + '?sortField=material_base&sortDirection=' + ${reverseSortDirection}}">Material Base</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/thcomps/page/' + ${thcompPage} + '?sortField=price&sortDirection=' + ${reverseSortDirection}}">Price</a>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="thcomp: ${thcomps}">
+                        <td th:text="${thcomp.id}"></td>
+                        <td th:text="${thcomp.name}"></td>
+                        <td th:text="${thcomp.amount}"></td>
+                        <td th:text="${thcomp.material_base}"></td>
+                        <td th:text="${thcomp.price}"></td>
+                        <td>
+                            <a th:href="@{/thcomps/edit_thcomp/{id}(id=${ThComp.id})}" class="btn btn-primary">Edit</a>
+                            <a th:href="@{/thcomps/delete_thcomp/{id}(id=${ThComp.id})}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div th:if="${totalThCompPages > 1}">
+                <div class="row col-sm-10">
+                    <div class="col-sm-2">
+                        Total ThComp: [[${totalThCompItems}]]
+                    </div>
+                    <div class="col-sm-1">
+                        <span th:each="i: ${#numbers.sequence(1, totalThCompPages)}">
+                            <a th:if="${ThCompPage != i}" th:href="@{'/thcomp/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">[[${i}]]</a>
+                            <span th:unless="${ThCompPage != i}">[[${i}]]</span>&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${ThCompPage < totalThCompPages}" th:href="@{'/thcomp/page/' + ${ThCompPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Next</a>
+                        <span th:unless="${ThCompPage < totalThCompPages}">Next</span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${ThCompPage < totalThCompPages}" th:href="@{'/thcomp/page/' + ${totalThCompPages} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Last</a>
+                        <span th:unless="${ThCompPage < totalThCompPages}">Last</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

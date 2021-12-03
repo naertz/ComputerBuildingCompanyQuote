@@ -53,8 +53,15 @@ public class CustomerQuoteFulfillment {
 	@ManyToOne(targetEntity=GPU.class, fetch=FetchType.LAZY)
 	@JoinColumn(name="gpu_id_fk", referencedColumnName="gpu_id")
 	private GPU gPU;
+	@NonNull
+	@ManyToOne(targetEntity=ThComp.class, fetch=FetchType.LAZY)
+	@JoinColumn(name="thcomp_id_fk", referencedColumnName="thcomp_id")
+	private ThComp thcomp;
 	@Column(name="total_cost")
 	private double totalCost;
 	@Column(name="customer_confirmation")
 	private Boolean customerConfirmation;
+	
+	
+	
 }
