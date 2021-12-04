@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="#">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Computer Building Company - Thermal Compound List</title>
+    </head>
+    <body>
+        <div class="container my-2">
+            <h1>Thermal Compounds</h1>
+            <a th:href="@{/}" class="btn btn-primary btn-sm mb-3">View quote requests</a>
+			<a th:href="@{/motherboards}" class="btn btn-secondary btn-sm mb-3">Motherboards</a>
+			<a th:href="@{/cpus}" class="btn btn-secondary btn-sm mb-3">CPUs</a>
+            <a th:href="@{/ram}" class="btn btn-secondary btn-sm mb-3">RAM</a>
+            <a th:href="@{/gpus}" class="btn btn-secondary btn-sm mb-3">GPU</a>
+            <a th:href="@{/thermal_compounds/add_thermal_compound}" class="btn btn-dark btn-sm mb-3">Add a thermal compound</a>
+            <a th:href="@{/storage_devices}" class="btn btn-secondary btn-sm mb-3">Storage Devices</a>
+            <a th:href="@{/fulfillments}" class="btn btn-primary btn-sm mb-3">View quote fulfillments</a>
+            <table border="1" class="table table-striped table-responsive-md">
+                <thead>
+                    <tr>
+                        <th>
+                            <a th:href="@{'/thermal_compounds/page/' + ${thermalCompoundPage} + '?sortField=id&sortDirection=' + ${reverseSortDirection}}">ID</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/thermal_compounds/page/' + ${thermalCompoundPage} + '?sortField=name&sortDirection=' + ${reverseSortDirection}}">Name</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/thermal_compounds/page/' + ${thermalCompoundPage} + '?sortField=amount&sortDirection=' + ${reverseSortDirection}}">Amount</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/thermal_compounds/page/' + ${thermalCompoundPage} + '?sortField=materialBase&sortDirection=' + ${reverseSortDirection}}">Material Base</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/thermal_compounds/page/' + ${thermalCompoundPage} + '?sortField=price&sortDirection=' + ${reverseSortDirection}}">Price</a>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="thermalCompound: ${thermalCompounds}">
+                        <td th:text="${thermalCompound.id}"></td>
+                        <td th:text="${thermalCompound.name}"></td>
+                        <td th:text="${thermalCompound.amount}"></td>
+                        <td th:text="${thermalCompound.materialBase}"></td>
+                        <td th:text="${thermalCompound.price}"></td>
+                        <td>
+                            <a th:href="@{/thermal_compounds/edit_thermal_compound/{id}(id=${thermalCompound.id})}" class="btn btn-primary">Edit</a>
+                            <a th:href="@{/thermal_compounds/delete_thermal_compound/{id}(id=${thermalCompound.id})}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div th:if="${totalThermalCompoundPages > 1}">
+                <div class="row col-sm-10">
+                    <div class="col-sm-2">
+                        Total Thermal Compounds: [[${totalThermalCompoundItems}]]
+                    </div>
+                    <div class="col-sm-1">
+                        <span th:each="i: ${#numbers.sequence(1, totalThermalCompoundPages)}">
+                            <a th:if="${thermalCompoundPage != i}" th:href="@{'/thermal_compounds/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">[[${i}]]</a>
+                            <span th:unless="${thermalCompoundPage != i}">[[${i}]]</span>&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${thermalCompoundPage < totalThermalCompoundPages}" th:href="@{'/thermal_compounds/page/' + ${thermalCompoundPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Next</a>
+                        <span th:unless="${thermalCompoundPage < totalThermalCompoundPages}">Next</span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${thermalCompoundPage < totalThermalCompoundPages}" th:href="@{'/thermal_compounds/page/' + ${totalThermalCompoundPages} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Last</a>
+                        <span th:unless="${thermalCompoundPage < totalThermalCompoundPages}">Last</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>

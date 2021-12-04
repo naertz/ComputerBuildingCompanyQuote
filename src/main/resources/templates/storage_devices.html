@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="#">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Computer Building Company - Storage List</title>
+    </head>
+    <body>
+        <div class="container my-2">
+            <h1>Storage</h1>
+            <a th:href="@{/}" class="btn btn-primary btn-sm mb-3">View quote requests</a>
+			<a th:href="@{/motherboards}" class="btn btn-secondary btn-sm mb-3">Motherboards</a>
+			<a th:href="@{/cpus}" class="btn btn-secondary btn-sm mb-3">CPUs</a>
+            <a th:href="@{/ram}" class="btn btn-secondary btn-sm mb-3">RAM</a>
+            <a th:href="@{/gpus}" class="btn btn-secondary btn-sm mb-3">GPU</a>
+            <a th:href="@{/thermal_compounds}" class="btn btn-secondary btn-sm mb-3">Thermal Compounds</a>
+            <a th:href="@{/storage_devices/add_storage_device}" class="btn btn-dark btn-sm mb-3">Add a storage device</a>
+            <a th:href="@{/fulfillments}" class="btn btn-primary btn-sm mb-3">View quote fulfillments</a>
+            <table border="1" class="table table-striped table-responsive-md">
+                <thead>
+                    <tr>
+                        <th>
+                            <a th:href="@{'/storage_devices/page/' + ${storageDevicePage} + '?sortField=id&sortDirection=' + ${reverseSortDirection}}">ID</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/storage_devices/page/' + ${storageDevicePage} + '?sortField=name&sortDirection=' + ${reverseSortDirection}}">Name</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/storage_devices/page/' + ${storageDevicePage} + '?sortField=brand&sortDirection=' + ${reverseSortDirection}}">Brand</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/storage_devices/page/' + ${storageDevicePage} + '?sortField=capacity&sortDirection=' + ${reverseSortDirection}}">Capacity</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/storage_devices/page/' + ${storageDevicePage} + '?sortField=readSpeed&sortDirection=' + ${reverseSortDirection}}">Read Speed</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/storage_devices/page/' + ${storageDevicePage} + '?sortField=writeSpeed&sortDirection=' + ${reverseSortDirection}}">Write Speed</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/storage_devices/page/' + ${storageDevicePage} + '?sortField=rPM&sortDirection=' + ${reverseSortDirection}}">RPM</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/storage_devices/page/' + ${storageDevicePage} + '?sortField=price&sortDirection=' + ${reverseSortDirection}}">Price</a>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="storageDevice: ${storageDevices}">
+                        <td th:text="${storageDevice.id}"></td>
+                        <td th:text="${storageDevice.name}"></td>
+                        <td th:text="${storageDevice.brand}"></td>
+                        <td th:text="${storageDevice.capacity}"></td>
+                        <td th:text="${storageDevice.readSpeed}"></td>
+                        <td th:text="${storageDevice.writeSpeed}"></td>
+                        <td th:text="${storageDevice.rPM}"></td>
+                        <td th:text="${storageDevice.price}"></td>
+                        <td>
+                            <a th:href="@{/storage_devices/edit_storage_device/{id}(id=${storageDevice.id})}" class="btn btn-primary">Edit</a>
+                            <a th:href="@{/storage_devices/delete_storage_device/{id}(id=${storageDevice.id})}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div th:if="${totalStorageDevicePages > 1}">
+                <div class="row col-sm-10">
+                    <div class="col-sm-2">
+                        Total Storage Devices: [[${totalStorageDeviceItems}]]
+                    </div>
+                    <div class="col-sm-1">
+                        <span th:each="i: ${#numbers.sequence(1, totalStorageDevicePages)}">
+                            <a th:if="${storageDevicePage != i}" th:href="@{'/storage_devices/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">[[${i}]]</a>
+                            <span th:unless="${storageDevicePage != i}">[[${i}]]</span>&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${storageDevicePage < totalStorageDevicePages}" th:href="@{'/storage_devices/page/' + ${storageDevicePage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Next</a>
+                        <span th:unless="${storageDevicePage < totalStorageDevicePages}">Next</span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${storageDevicePage < totalStorageDevicePages}" th:href="@{'/storage_devices/page/' + ${totalStorageDevicePages} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Last</a>
+                        <span th:unless="${storageDevicePage < totalStorageDevicePages}">Last</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
