@@ -9,16 +9,16 @@
     <body>
         <div class="container">
             <h1>Computer Building Company - Edit Thermal Compound</h1>
-            <h2>Edit the Thermal Compound.</h2>
-            <form th:object="${ThComp}" th:action="@{/thcomp/update_thcomp}" method="POST">
+            <h2>Edit the thermal compound.</h2>
+            <form th:object="${thermalCompound}" th:action="@{/thermal_compounds/update_thermal_compound}" method="POST">
             	<input type="hidden" th:field="*{id}">
-                <input class="form-control mb-4 col-4" type="text" name="name" placeholder="Compound name" size="128" th:field="*{name}">
+                <input class="form-control mb-4 col-4" type="text" name="name" placeholder="Compound Name" size="128" th:field="*{name}">
                 <input class="form-control mb-4 col-4" type="text" name="amount" placeholder="Amount" size="16" th:field="*{amount}">
-                <input class="form-control mb-4 col-4" type="text" name="speed" placeholder="Material" size="16" th:field="*{material_base}">
-                <input class="form-control mb-4 col-4" type="text" name="price" placeholder="Price" size="16" th:field="*{price}">
+                <input class="form-control mb-4 col-4" type="text" name="materialBase" placeholder="Material Base" size="32" th:field="*{materialBase}">
+                <input class="form-control mb-4 col-4" type="text" name="price" placeholder="Price" size="8" th:field="*{price}">
                 <button class="btn btn-info col-2" type="submit">Update Thermal Compound</button>
             </form>
-            <a th:href="@{/thcomp}">View Thermal Compound</a>
+            <a th:href="@{/thermal_compounds}">View Thermal Compound</a>
         </div>
     </body>
-</html>l>
+</html>

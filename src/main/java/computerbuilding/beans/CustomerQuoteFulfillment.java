@@ -53,6 +53,14 @@ public class CustomerQuoteFulfillment {
 	@ManyToOne(targetEntity=GPU.class, fetch=FetchType.LAZY)
 	@JoinColumn(name="gpu_id_fk", referencedColumnName="gpu_id")
 	private GPU gPU;
+	@NonNull
+	@ManyToOne(targetEntity=ThermalCompound.class, fetch=FetchType.LAZY)
+	@JoinColumn(name="thermal_compound_id_fk", referencedColumnName="thermal_compound_id")
+	private ThermalCompound thermalCompound;
+	@NonNull
+	@ManyToOne(targetEntity=StorageDevice.class, fetch=FetchType.LAZY)
+	@JoinColumn(name="storage_device_id_fk", referencedColumnName="storage_device_id")
+	private StorageDevice storageDevice;
 	@Column(name="total_cost")
 	private double totalCost;
 	@Column(name="customer_confirmation")
