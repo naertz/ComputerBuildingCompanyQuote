@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="#">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Computer Building Company - Add Keyboard</title>
+    </head>
+    <body>
+        <div class="container-fluid my-2">
+            <h1>Computer Building Company - Add Keyboard</h1>
+            <h2>Enter a new keyboard to use for the customers' builds.</h2>
+            <form th:object="${keyboard}" th:action="@{/keyboards/update_keyboard}" method="POST">
+                <input class="form-control mb-4 col-4" type="text" name="name" placeholder="Keyboard Name" size="128" th:field="*{name}">
+                <input class="form-control mb-4 col-4" type="text" name="brand" placeholder="Brand" size="32" th:field="*{brand}">
+                <input class="form-control mb-4 col-4" type="text" name="style" placeholder="Style" size="16" th:field="*{style}">
+                <input class="form-control mb-4 col-4" type="text" name="color" placeholder="Color" size="32" th:field="*{color}">
+                <input class="form-control mb-4 col-4" type="text" name="backlit" placeholder="Backlit" size="16" th:field="*{backlit}">
+                <input class="form-control mb-4 col-4" type="text" name="connectionType" placeholder="Connection Type" size="24" th:field="*{connectionType}">
+                <input class="form-control mb-4 col-4" type="text" name="switchType" placeholder="Switch Type" size="64" th:field="*{switchType}">
+                <input class="form-control mb-4 col-4" type="text" name="sizePercent" placeholder="Size Percent" size="8" th:field="*{sizePercent}">
+                <input class="form-control mb-4 col-4" type="text" name="price" placeholder="Price" size="8" th:field="*{price}">
+                <button class="btn btn-info col-2" type="submit">Submit Keyboard</button>
+            </form>
+            <a th:href="@{/keyboards}">View Keyboards</a>
+        </div>
+    </body>
+</html>

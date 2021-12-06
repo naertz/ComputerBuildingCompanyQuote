@@ -68,6 +68,10 @@ public class CustomerQuoteFulfillment {
 	@ManyToOne(targetEntity = Monitor.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "monitor_id_fk", referencedColumnName = "monitor_id")
 	private Monitor monitor;
+	@NonNull
+	@ManyToOne(targetEntity = Keyboard.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "keyboard_id_fk", referencedColumnName = "keyboard_id")
+	private Keyboard keyboard;
 	@Column(name = "total_cost")
 	private double totalCost;
 	@Column(name = "customer_confirmation")

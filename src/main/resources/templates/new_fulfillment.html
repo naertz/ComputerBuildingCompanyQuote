@@ -248,6 +248,36 @@
                         </tr>
                     </tbody>
                 </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Style</th>
+                            <th>Color</th>
+                            <th>Backlit</th>
+                            <th>Connection Type</th>
+                            <th>Switch Type</th>
+                            <th>Size Percent</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="keyboard: ${keyboards}">
+                            <td><input type="radio" name="keyboards" th:field="*{keyboard.id}" th:value="${keyboard.id}"></td>
+                            <td th:text="${keyboard.name}"></td>
+                            <td th:text="${keyboard.brand}"></td>
+                            <td th:text="${keyboard.style}"></td>
+                            <td th:text="${keyboard.color}"></td>
+                            <td th:text="${keyboard.backlit}"></td>
+                            <td th:text="${keyboard.connectionType}"></td>
+                            <td th:text="${keyboard.switchType}"></td>
+                            <td th:text="${keyboard.sizePercent}"></td>
+                            <td th:text="${keyboard.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
                 <input class="form-control mb-4 col-4" type="text" name="totalCost" placeholder="Total Cost" size="8" th:field="*{totalCost}">
                 <button class="btn btn-info col-2" type="submit">Submit Quote Fulfillment</button>
             </form>
