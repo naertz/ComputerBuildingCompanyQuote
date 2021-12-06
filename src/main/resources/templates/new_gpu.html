@@ -2,12 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="#">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
         <title>Computer Building Company - Add GPU</title>
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid my-2">
             <h1>Computer Building Company - Add GPU</h1>
             <h2>Enter a new GPU to use for the customers' builds.</h2>
             <form th:object="${gPU}" th:action="@{/gpus/update_gpu}" method="POST">
