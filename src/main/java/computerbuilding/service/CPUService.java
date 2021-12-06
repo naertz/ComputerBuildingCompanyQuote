@@ -29,8 +29,8 @@ public class CPUService implements CPUServiceInterface {
 	}
 
 	@Override
-	public void updateCPU(final CPU cpu) {
-		cPURepository.save(cpu);
+	public void updateCPU(final CPU cPU) {
+		cPURepository.save(cPU);
 	}
 
 	@Override

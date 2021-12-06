@@ -14,7 +14,7 @@ import computerbuilding.beans.CPU;
 public interface CPUServiceInterface {
 	List<CPU> getAllCPUs();
 
-	void updateCPU(CPU cpu);
+	void updateCPU(CPU cPU);
 
 	CPU getCPUById(long id);
 

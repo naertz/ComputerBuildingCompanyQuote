@@ -14,7 +14,7 @@ import computerbuilding.beans.GPU;
 public interface GPUServiceInterface {
 	List<GPU> getAllGPUs();
 
-	void updateGPU(GPU cpu);
+	void updateGPU(GPU gPU);
 
 	GPU getGPUById(long id);
 
