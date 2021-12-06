@@ -23,28 +23,28 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="storage_device")
+@Table(name = "storage_device")
 public class StorageDevice {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="storage_device_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "storage_device_id")
 	private long id;
 	@NonNull
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
 	@NonNull
-	@Column(name="brand")
+	@Column(name = "brand")
 	private String brand;
-	@Column(name="capacity")
+	@Column(name = "capacity")
 	private int capacity;
-	@Column(name="read_speed")
+	@Column(name = "read_speed")
 	private int readSpeed;
-	@Column(name="write_speed")
+	@Column(name = "write_speed")
 	private int writeSpeed;
-	@Column(name="rpm")
+	@Column(name = "rpm")
 	private double rPM;
-	@Column(name="price")
+	@Column(name = "price")
 	private double price;
-	@OneToMany(targetEntity=CustomerQuoteFulfillment.class, mappedBy="storageDevice", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
+	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "storageDevice", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

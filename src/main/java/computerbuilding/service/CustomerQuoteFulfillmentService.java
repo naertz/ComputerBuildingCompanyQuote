@@ -3,7 +3,6 @@
  * CIS-175 - Fall 2021
  * Nov 23, 2021
  */
-
 package computerbuilding.service;
 
 import java.util.List;
@@ -30,31 +29,27 @@ public class CustomerQuoteFulfillmentService implements CustomerQuoteFulfillment
 	}
 
 	@Override
-	public void updateCustomerQuoteFulfillment(CustomerQuoteFulfillment customerQuoteFulfillment) {
-		this.customerQuoteFulfillmentRepository.save(customerQuoteFulfillment);
+	public void updateCustomerQuoteFulfillment(final CustomerQuoteFulfillment customerQuoteFulfillment) {
+		customerQuoteFulfillmentRepository.save(customerQuoteFulfillment);
 	}
 
 	@Override
-	public CustomerQuoteFulfillment getCustomerQuoteFulfillmentById(long id) {
-		Optional<CustomerQuoteFulfillment> optional = customerQuoteFulfillmentRepository.findById(id);
-		CustomerQuoteFulfillment customerQuoteFulfillment = null;
-		if (optional.isPresent()) {
-			customerQuoteFulfillment = optional.get();
-		} else {
-			throw new RuntimeException("CustomerQuoteFulfillment not found for id: " + id);
-		}
-		return customerQuoteFulfillment;
+	public CustomerQuoteFulfillment getCustomerQuoteFulfillmentById(final long id) {
+		final Optional<CustomerQuoteFulfillment> optional = customerQuoteFulfillmentRepository.findById(id);
+		if (!optional.isPresent())
+			throw new RuntimeException("Customer Quote Fulfillment not found for id: " + id);
+		return optional.get();
 	}
 
 	@Override
-	public void deleteCustomerQuoteFulfillmentById(long id) {
-			this.customerQuoteFulfillmentRepository.deleteById(id);
+	public void deleteCustomerQuoteFulfillmentById(final long id) {
+		customerQuoteFulfillmentRepository.deleteById(id);
 	}
 
 	@Override
-	public Page<CustomerQuoteFulfillment> findPaginated(int pageNumber, int pageSize, String sortField, String sortDirection) {
-		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
-		Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-		return this.customerQuoteFulfillmentRepository.findAll(pageable);
+	public Page<CustomerQuoteFulfillment> findPaginated(final int pageNumber, final int pageSize, final String sortField, final String sortDirection) {
+		final Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+		final Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+		return customerQuoteFulfillmentRepository.findAll(pageable);
 	}
 }

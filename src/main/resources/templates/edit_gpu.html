@@ -10,13 +10,13 @@
         <div class="container">
             <h1>Computer Building Company - Edit GPU</h1>
             <h2>Edit the GPU.</h2>
-            <form th:object="${gpu}" th:action="@{/gpus/update_gpu}" method="POST">
+            <form th:object="${gPU}" th:action="@{/gpus/update_gpu}" method="POST">
                 <input type="hidden" th:field="*{id}">
                 <input class="form-control mb-4 col-4" type="text" name="name" placeholder="GPU Name" size="128" th:field="*{name}">
                 <input class="form-control mb-4 col-4" type="text" name="brand" placeholder="Brand" size="16" th:field="*{brand}">
                 <input class="form-control mb-4 col-4" type="text" name="memoryType" placeholder="Memory Type" size="16" th:field="*{memoryType}">
                 <input class="form-control mb-4 col-4" type="text" name="videoMemory" placeholder="Video Memory" size="16" th:field="*{videoMemory}">
-                <input class="form-control mb-4 col-4" type="text" name="pcieExpress" placeholder="PCIE Express" size="16" th:field="*{pcieExpress}">
+                <input class="form-control mb-4 col-4" type="text" name="pCIExpress" placeholder="PCI Express" size="16" th:field="*{pCIExpress}">
                 <input class="form-control mb-4 col-4" type="text" name="clockSpeed" placeholder="Clock Speed" size="16" th:field="*{clockSpeed}">
                 <input class="form-control mb-4 col-4" type="text" name="price" placeholder="Price" size="8" th:field="*{price}">
                 <button class="btn btn-info col-2" type="submit">Update GPU</button>

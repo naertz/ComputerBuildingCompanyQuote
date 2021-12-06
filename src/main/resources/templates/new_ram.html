@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <h1>Computer Building Company - Add RAM</h1>
-            <h2>Enter new RAM to use for customers' builds.</h2>
+            <h2>Enter new RAM to use for the customers' builds.</h2>
             <form th:object="${rAM}" th:action="@{/ram/update_ram}" method="POST">
                 <input class="form-control mb-4 col-4" type="text" name="name" placeholder="RAM Name" size="128" th:field="*{name}">
                 <input class="form-control mb-4 col-4" type="text" name="generation" placeholder="Generation" size="16" th:field="*{generation}">
@@ -18,9 +18,9 @@
                 <input class="form-control mb-4 col-4" type="text" name="sticks" placeholder="Stick Count" size="16" th:field="*{sticks}">
                 <input class="form-control mb-4 col-4" type="text" name="latency" placeholder="Latency" size="16" th:field="*{latency}">
                 <input class="form-control mb-4 col-4" type="text" name="price" placeholder="Price" size="16" th:field="*{price}">
-                <button class="btn btn-info col-2" type="submit">Submit Ram</button>
+                <button class="btn btn-info col-2" type="submit">Submit RAM</button>
             </form>
-            <a th:href="@{/ram}">View Ram</a>
+            <a th:href="@{/ram}">View RAM</a>
         </div>
     </body>
 </html>

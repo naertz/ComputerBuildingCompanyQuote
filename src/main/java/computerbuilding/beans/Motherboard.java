@@ -3,7 +3,6 @@
  * CIS-175 - Fall 2021
  * Nov 16, 2021
  */
-
 package computerbuilding.beans;
 
 import java.util.List;
@@ -29,34 +28,34 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="motherboard")
+@Table(name = "motherboard")
 public class Motherboard {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="motherboard_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "motherboard_id")
 	private long id;
 	@NonNull
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
 	@NonNull
-	@Column(name="form_factor")
+	@Column(name = "form_factor")
 	private String formFactor;
 	@NonNull
-	@Column(name="socket")
+	@Column(name = "socket")
 	private String socket;
 	@NonNull
-	@Column(name="chipset")
+	@Column(name = "chipset")
 	private String chipset;
-	@Column(name="memory_slots")
+	@Column(name = "memory_slots")
 	private int memorySlots;
-	@Column(name="pcie_slots")
-	private int pcieSlots;
-	@Column(name="sata_ports")
-	private int sataPorts;
-	@Column(name="m2_slots")
+	@Column(name = "pcie_slots")
+	private int pCIESlots;
+	@Column(name = "sata_ports")
+	private int sATAPorts;
+	@Column(name = "m2_slots")
 	private int m2Slots;
-	@Column(name="price")
+	@Column(name = "price")
 	private double price;
-	@OneToMany(targetEntity=CustomerQuoteFulfillment.class, mappedBy="motherboard", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
+	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "motherboard", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

@@ -6,4 +6,4 @@ import org.springframework.stereotype.Repository;
 import computerbuilding.beans.StorageDevice;
 
 @Repository
-public interface StorageDeviceRepository extends JpaRepository<StorageDevice, Long> { }
+public interface StorageDeviceRepository extends JpaRepository<StorageDevice, Long> {}

@@ -3,7 +3,6 @@
  * CIS-175 - Fall 2021
  * Nov 23, 2021
  */
-
 package computerbuilding.beans;
 
 import javax.persistence.Column;
@@ -27,42 +26,42 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="customer_quote_fulfillment")
+@Table(name = "customer_quote_fulfillment")
 public class CustomerQuoteFulfillment {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="customer_quote_fulfillment_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "customer_quote_fulfillment_id")
 	private long id;
 	@NonNull
-	@ManyToOne(targetEntity=CustomerQuoteRequest.class, fetch=FetchType.LAZY)
-	@JoinColumn(name="customer_quote_request_id_fk", referencedColumnName="customer_quote_request_id")
+	@ManyToOne(targetEntity = CustomerQuoteRequest.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "customer_quote_request_id_fk", referencedColumnName = "customer_quote_request_id")
 	private CustomerQuoteRequest customerQuoteRequest;
 	@NonNull
-	@ManyToOne(targetEntity=Motherboard.class, fetch=FetchType.LAZY)
-	@JoinColumn(name="motherboard_id_fk", referencedColumnName="motherboard_id")
+	@ManyToOne(targetEntity = Motherboard.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "motherboard_id_fk", referencedColumnName = "motherboard_id")
 	private Motherboard motherboard;
 	@NonNull
-	@ManyToOne(targetEntity=CPU.class, fetch=FetchType.LAZY)
-	@JoinColumn(name="cpu_id_fk", referencedColumnName="cpu_id")
+	@ManyToOne(targetEntity = CPU.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "cpu_id_fk", referencedColumnName = "cpu_id")
 	private CPU cPU;
 	@NonNull
-	@ManyToOne(targetEntity=RAM.class, fetch=FetchType.LAZY)
-	@JoinColumn(name="ram_id_fk", referencedColumnName="ram_id")
+	@ManyToOne(targetEntity = RAM.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "ram_id_fk", referencedColumnName = "ram_id")
 	private RAM rAM;
 	@NonNull
-	@ManyToOne(targetEntity=GPU.class, fetch=FetchType.LAZY)
-	@JoinColumn(name="gpu_id_fk", referencedColumnName="gpu_id")
+	@ManyToOne(targetEntity = GPU.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "gpu_id_fk", referencedColumnName = "gpu_id")
 	private GPU gPU;
 	@NonNull
-	@ManyToOne(targetEntity=ThermalCompound.class, fetch=FetchType.LAZY)
-	@JoinColumn(name="thermal_compound_id_fk", referencedColumnName="thermal_compound_id")
+	@ManyToOne(targetEntity = ThermalCompound.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "thermal_compound_id_fk", referencedColumnName = "thermal_compound_id")
 	private ThermalCompound thermalCompound;
 	@NonNull
-	@ManyToOne(targetEntity=StorageDevice.class, fetch=FetchType.LAZY)
-	@JoinColumn(name="storage_device_id_fk", referencedColumnName="storage_device_id")
+	@ManyToOne(targetEntity = StorageDevice.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "storage_device_id_fk", referencedColumnName = "storage_device_id")
 	private StorageDevice storageDevice;
-	@Column(name="total_cost")
+	@Column(name = "total_cost")
 	private double totalCost;
-	@Column(name="customer_confirmation")
+	@Column(name = "customer_confirmation")
 	private Boolean customerConfirmation;
 }

@@ -3,7 +3,6 @@
  * CIS-175 - Fall 2021
  * Nov 16, 2021
  */
-
 package computerbuilding.service;
 
 import java.util.List;
@@ -30,31 +29,27 @@ public class CustomerQuoteRequestService implements CustomerQuoteRequestServiceI
 	}
 
 	@Override
-	public void updateCustomerQuoteRequest(CustomerQuoteRequest customerQuoteRequest) {
-		this.customerQuoteRequestRepository.save(customerQuoteRequest);
+	public void updateCustomerQuoteRequest(final CustomerQuoteRequest customerQuoteRequest) {
+		customerQuoteRequestRepository.save(customerQuoteRequest);
 	}
 
 	@Override
-	public CustomerQuoteRequest getCustomerQuoteRequestById(long id) {
-		Optional<CustomerQuoteRequest> optional = customerQuoteRequestRepository.findById(id);
-		CustomerQuoteRequest customerQuoteRequest = null;
-		if (optional.isPresent()) {
-			customerQuoteRequest = optional.get();
-		} else {
-			throw new RuntimeException("CustomerQuoteRequest not found for id: " + id);
-		}
-		return customerQuoteRequest;
+	public CustomerQuoteRequest getCustomerQuoteRequestById(final long id) {
+		final Optional<CustomerQuoteRequest> optional = customerQuoteRequestRepository.findById(id);
+		if (!optional.isPresent())
+			throw new RuntimeException("Customer Quote Request not found for id: " + id);
+		return optional.get();
 	}
 
 	@Override
-	public void deleteCustomerQuoteRequestById(long id) {
-		this.customerQuoteRequestRepository.deleteById(id);
+	public void deleteCustomerQuoteRequestById(final long id) {
+		customerQuoteRequestRepository.deleteById(id);
 	}
 
 	@Override
-	public Page<CustomerQuoteRequest> findPaginated(int pageNumber, int pageSize, String sortField, String sortDirection) {
-		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
-		Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-		return this.customerQuoteRequestRepository.findAll(pageable);
+	public Page<CustomerQuoteRequest> findPaginated(final int pageNumber, final int pageSize, final String sortField, final String sortDirection) {
+		final Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+		final Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+		return customerQuoteRequestRepository.findAll(pageable);
 	}
 }

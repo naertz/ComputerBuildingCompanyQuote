@@ -6,4 +6,4 @@ import org.springframework.stereotype.Repository;
 import computerbuilding.beans.ThermalCompound;
 
 @Repository
-public interface ThermalCompoundRepository extends JpaRepository<ThermalCompound, Long>{}
+public interface ThermalCompoundRepository extends JpaRepository<ThermalCompound, Long> {}

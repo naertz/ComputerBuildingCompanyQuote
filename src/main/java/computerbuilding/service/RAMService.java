@@ -24,31 +24,27 @@ public class RAMService implements RAMServiceInterface {
 	}
 
 	@Override
-	public void updateRAM(RAM rAM) {
-		this.rAMRepository.save(rAM);
+	public void updateRAM(final RAM rAM) {
+		rAMRepository.save(rAM);
 	}
 
 	@Override
-	public RAM getRAMById(long id) {
-		Optional<RAM> optional = rAMRepository.findById(id);
-		RAM rAM = null;
-		if (optional.isPresent()) {
-			rAM = optional.get();
-		} else {
+	public RAM getRAMById(final long id) {
+		final Optional<RAM> optional = rAMRepository.findById(id);
+		if (!optional.isPresent())
 			throw new RuntimeException("RAM not found for id: " + id);
-		}
-		return rAM;
+		return optional.get();
 	}
 
 	@Override
-	public void deleteRAMById(long id) {
-		this.rAMRepository.deleteById(id);
+	public void deleteRAMById(final long id) {
+		rAMRepository.deleteById(id);
 	}
 
 	@Override
-	public Page<RAM> findPaginated(int pageNumber, int pageSize, String sortField, String sortDirection) {
-		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
-		Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-		return this.rAMRepository.findAll(pageable);
+	public Page<RAM> findPaginated(final int pageNumber, final int pageSize, final String sortField, final String sortDirection) {
+		final Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+		final Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+		return rAMRepository.findAll(pageable);
 	}
 }

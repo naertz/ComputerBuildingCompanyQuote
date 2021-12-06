@@ -21,51 +21,47 @@ public class RAMController {
 	RAMServiceInterface rAMService;
 
 	@GetMapping("/ram")
-	public String viewRAMPage(Model model) {
+	public String viewRAMPage(final Model model) {
 		return findPaginated(1, "name", "asc", model);
 	}
 
 	@GetMapping("/ram/add_ram")
-	public String addRAM(Model model) {
-		RAM rAM  = new RAM();
+	public String addRAM(final Model model) {
+		final RAM rAM = new RAM();
 		model.addAttribute("rAM", rAM);
 		return "new_ram";
 	}
 
 	@PostMapping("/ram/update_ram")
-	public String updateRAM(@ModelAttribute("rAM") RAM rAM) {
+	public String updateRAM(@ModelAttribute("rAM") final RAM rAM) {
 		rAMService.updateRAM(rAM);
 		return "redirect:/ram";
 	}
 
 	@GetMapping("/ram/edit_ram/{id}")
-	public String editRAM(@PathVariable(value="id") long id, Model model) {
-		RAM rAM = rAMService.getRAMById(id);
+	public String editRAM(@PathVariable(value = "id") final long id, final Model model) {
+		final RAM rAM = rAMService.getRAMById(id);
 		model.addAttribute("rAM", rAM);
 		return "edit_ram";
 	}
 
 	@GetMapping("/ram/delete_ram/{id}")
-	public String deleteRAM(@PathVariable(value="id") long id) {
-		this.rAMService.deleteRAMById(id);
+	public String deleteRAM(@PathVariable(value = "id") final long id) {
+		rAMService.deleteRAMById(id);
 		return "redirect:/ram";
 	}
 
 	@GetMapping("/ram/page/{pageNumber}")
-	public String findPaginated(@PathVariable(value="pageNumber") int pageNumber, @RequestParam("sortField") String sortField, @RequestParam("sortDirection") String sortDirection, Model model) {
-		int pageSize = 5;
-
-		Page<RAM> rAMPage = rAMService.findPaginated(pageNumber, pageSize, sortField, sortDirection);
-		List<RAM> rAM = rAMPage.getContent();
-
+	public String findPaginated(@PathVariable(value = "pageNumber") final int pageNumber, @RequestParam("sortField") final String sortField, @RequestParam("sortDirection") final String sortDirection, final Model model) {
+		final int pageSize = 5;
+		final Page<RAM> rAMPage = rAMService.findPaginated(pageNumber, pageSize, sortField, sortDirection);
+		final List<RAM> rAM = rAMPage.getContent();
 		model.addAttribute("rAMPage", pageNumber);
 		model.addAttribute("totalRAMPages", rAMPage.getTotalPages());
 		model.addAttribute("totalRAMItems", rAMPage.getTotalElements());
-
 		model.addAttribute("sortField", sortField);
 		model.addAttribute("sortDirection", sortDirection);
-		model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
-
+		model.addAttribute("reverseSortDirection", "asc".equals(sortDirection) ? "desc" : "asc");
 		model.addAttribute("rAM", rAM);
 		return "ram";
 	}

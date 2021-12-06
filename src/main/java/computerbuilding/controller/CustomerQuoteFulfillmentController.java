@@ -3,7 +3,6 @@
  * CIS-175 - Fall 2021
  * Nov 23, 2021
  */
-
 package computerbuilding.controller;
 
 import java.util.List;
@@ -47,76 +46,69 @@ public class CustomerQuoteFulfillmentController {
 	@Autowired
 	StorageDeviceServiceInterface storageDeviceService;
 
-
 	@GetMapping("/fulfillments")
-	public String viewFulfillmentsPage(Model model) {
+	public String viewFulfillmentsPage(final Model model) {
 		return findPaginated(1, "id", "asc", model);
 	}
 
 	@GetMapping("/fulfillments/create_fulfillment")
-	public String createCustomerQuoteFulfillment(Model model) {
-		CustomerQuoteFulfillment customerQuoteFulfillment = new CustomerQuoteFulfillment();
+	public String createCustomerQuoteFulfillment(final Model model) {
+		final CustomerQuoteFulfillment customerQuoteFulfillment = new CustomerQuoteFulfillment();
 		model.addAttribute("customerQuoteFulfillment", customerQuoteFulfillment);
 		model.addAttribute("customerQuoteRequests", customerQuoteRequestService.getAllCustomerQuoteRequests());
 		model.addAttribute("motherboards", motherboardService.getAllMotherboards());
-		model.addAttribute("cPUS", cPUService.getAllCPUs());
+		model.addAttribute("cPUs", cPUService.getAllCPUs());
 		model.addAttribute("rAM", rAMService.getAllRAM());
-		model.addAttribute("gPUS", gPUService.getAllGPUs());
+		model.addAttribute("gPUs", gPUService.getAllGPUs());
 		model.addAttribute("thermalCompounds", thermalCompoundService.getAllThermalCompounds());
 		model.addAttribute("storageDevices", storageDeviceService.getAllStorageDevices());
-
 		return "new_fulfillment";
 	}
 
 	@PostMapping("/fulfillments/update_fulfillment")
-	public String updateCustomerQuoteFulfillment(@ModelAttribute("customerQuoteFulfillment") CustomerQuoteFulfillment customerQuoteFulfillment) {
+	public String updateCustomerQuoteFulfillment(@ModelAttribute("customerQuoteFulfillment") final CustomerQuoteFulfillment customerQuoteFulfillment) {
 		customerQuoteFulfillmentService.updateCustomerQuoteFulfillment(customerQuoteFulfillment);
 		return "redirect:/fulfillments";
 	}
 
 	@GetMapping("/fulfillments/confirm_fulfillment/{id}")
-	public String confirmCustomerQuoteFulfillment(@PathVariable(value="id") long id, Model model) {
-		CustomerQuoteFulfillment customerQuoteFulfillment = customerQuoteFulfillmentService.getCustomerQuoteFulfillmentById(id);
+	public String confirmCustomerQuoteFulfillment(@PathVariable(value = "id") final long id, final Model model) {
+		final CustomerQuoteFulfillment customerQuoteFulfillment = customerQuoteFulfillmentService.getCustomerQuoteFulfillmentById(id);
 		model.addAttribute("customerQuoteFulfillment", customerQuoteFulfillment);
 		return "confirm_fulfillment";
 	}
 
 	@GetMapping("/fulfillments/edit_fulfillment/{id}")
-	public String editCustomerQuoteFulfillment(@PathVariable(value="id") long id, Model model) {
-		CustomerQuoteFulfillment customerQuoteFulfillment = customerQuoteFulfillmentService.getCustomerQuoteFulfillmentById(id);
+	public String editCustomerQuoteFulfillment(@PathVariable(value = "id") final long id, final Model model) {
+		final CustomerQuoteFulfillment customerQuoteFulfillment = customerQuoteFulfillmentService.getCustomerQuoteFulfillmentById(id);
 		model.addAttribute("customerQuoteFulfillment", customerQuoteFulfillment);
 		model.addAttribute("customerQuoteRequests", customerQuoteRequestService.getAllCustomerQuoteRequests());
 		model.addAttribute("motherboards", motherboardService.getAllMotherboards());
-		model.addAttribute("cPUS", cPUService.getAllCPUs());
+		model.addAttribute("cPUs", cPUService.getAllCPUs());
 		model.addAttribute("rAM", rAMService.getAllRAM());
-		model.addAttribute("gPUS", gPUService.getAllGPUs());
+		model.addAttribute("gPUs", gPUService.getAllGPUs());
 		model.addAttribute("thermalCompounds", thermalCompoundService.getAllThermalCompounds());
 		model.addAttribute("storageDevices", storageDeviceService.getAllStorageDevices());
-
 		return "edit_fulfillment";
 	}
 
 	@GetMapping("/fulfillments/delete_fulfillment/{id}")
-	public String deleteCustomerQuoteFulfillment(@PathVariable(value="id") long id) {
-		this.customerQuoteFulfillmentService.deleteCustomerQuoteFulfillmentById(id);
+	public String deleteCustomerQuoteFulfillment(@PathVariable(value = "id") final long id) {
+		customerQuoteFulfillmentService.deleteCustomerQuoteFulfillmentById(id);
 		return "redirect:/fulfillments";
 	}
 
 	@GetMapping("/fulfillments/page/{pageNumber}")
-	public String findPaginated(@PathVariable(value="pageNumber") int pageNumber, @RequestParam("sortField") String sortField, @RequestParam("sortDirection") String sortDirection, Model model) {
-		int pageSize = 5;
-
-		Page<CustomerQuoteFulfillment> fulfillmentPage = customerQuoteFulfillmentService.findPaginated(pageNumber, pageSize, sortField, sortDirection);
-		List<CustomerQuoteFulfillment> fulfillments = fulfillmentPage.getContent();
-
+	public String findPaginated(@PathVariable(value = "pageNumber") final int pageNumber, @RequestParam("sortField") final String sortField, @RequestParam("sortDirection") final String sortDirection, final Model model) {
+		final int pageSize = 5;
+		final Page<CustomerQuoteFulfillment> fulfillmentPage = customerQuoteFulfillmentService.findPaginated(pageNumber, pageSize, sortField, sortDirection);
+		final List<CustomerQuoteFulfillment> fulfillments = fulfillmentPage.getContent();
 		model.addAttribute("fulfillmentPage", pageNumber);
 		model.addAttribute("totalFulfillmentPages", fulfillmentPage.getTotalPages());
 		model.addAttribute("totalFulfillmentItems", fulfillmentPage.getTotalElements());
-
 		model.addAttribute("sortField", sortField);
 		model.addAttribute("sortDirection", sortDirection);
-		model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
-
+		model.addAttribute("reverseSortDirection", "asc".equals(sortDirection) ? "desc" : "asc");
 		model.addAttribute("customerQuoteFulfillments", fulfillments);
 		return "fulfillments";
 	}

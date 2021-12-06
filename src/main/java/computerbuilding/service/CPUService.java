@@ -1,9 +1,8 @@
 /**
- *@author Jake Soulinthavong - jakesoul
- *CIS175 - Fall 2021
- *September 23, 2021
+ * @author Jake Soulinthavong - jakesoul
+ * CIS175 - Fall 2021
+ * September 23, 2021
  */
-
 package computerbuilding.service;
 
 import java.util.List;
@@ -30,31 +29,27 @@ public class CPUService implements CPUServiceInterface {
 	}
 
 	@Override
-	public void updateCPU(CPU cpu) {
-		this.cPURepository.save(cpu);
+	public void updateCPU(final CPU cpu) {
+		cPURepository.save(cpu);
 	}
 
 	@Override
-	public CPU getCPUById(long id) {
-		Optional<CPU> optional = cPURepository.findById(id);
-		CPU cPU = null;
-		if (optional.isPresent()) {
-			cPU = optional.get();
-		} else {
+	public CPU getCPUById(final long id) {
+		final Optional<CPU> optional = cPURepository.findById(id);
+		if (!optional.isPresent())
 			throw new RuntimeException("CPU not found for id: " + id);
-		}
-		return cPU;
+		return optional.get();
 	}
 
 	@Override
-	public void deleteCPUById(long id) {
-		this.cPURepository.deleteById(id);
+	public void deleteCPUById(final long id) {
+		cPURepository.deleteById(id);
 	}
 
 	@Override
-	public Page<CPU> findPaginated(int pageNumber, int pageSize, String sortField, String sortDirection) {
-		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
-		Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-		return this.cPURepository.findAll(pageable);
+	public Page<CPU> findPaginated(final int pageNumber, final int pageSize, final String sortField, final String sortDirection) {
+		final Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+		final Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+		return cPURepository.findAll(pageable);
 	}
 }

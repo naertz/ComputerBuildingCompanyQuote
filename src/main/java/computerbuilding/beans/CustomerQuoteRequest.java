@@ -3,7 +3,6 @@
  * CIS-175 - Fall 2021
  * Nov 16, 2021
  */
-
 package computerbuilding.beans;
 
 import java.util.List;
@@ -29,28 +28,28 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="customer_quote_request")
+@Table(name = "customer_quote_request")
 public class CustomerQuoteRequest {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="customer_quote_request_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "customer_quote_request_id")
 	private long id;
 	@NonNull
-	@Column(name="first_name")
+	@Column(name = "first_name")
 	private String firstName;
 	@NonNull
-	@Column(name="last_name")
+	@Column(name = "last_name")
 	private String lastName;
 	@NonNull
-	@Column(name="email")
+	@Column(name = "email")
 	private String email;
-	@Column(name="phone_number")
+	@Column(name = "phone_number")
 	private String phoneNumber;
 	@NonNull
-	@Column(name="computer_needs_description")
+	@Column(name = "computer_needs_description")
 	private String computerNeedsDescription;
-	@Column(name="budget")
+	@Column(name = "budget")
 	private double budget;
-	@OneToMany(targetEntity=CustomerQuoteFulfillment.class, mappedBy="customerQuoteRequest", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
+	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "customerQuoteRequest", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

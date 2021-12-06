@@ -1,10 +1,10 @@
+/**
+ * @author Jake Soulinthavong - jakesoul
+ * CIS175 - Fall 2021
+ * September 23, 2021
+ */
 package computerbuilding.controller;
 
-/**
- *@author Jake Soulinthavong - jakesoul
- *CIS175 - Fall 2021
- *September 23, 2021
- */
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,55 +23,51 @@ import computerbuilding.service.GPUServiceInterface;
 @Controller
 public class GPUController {
 	@Autowired
-	GPUServiceInterface gpuService;
+	GPUServiceInterface gPUService;
 
 	@GetMapping("/gpus")
-	public String viewGPUsPage(Model model) {
+	public String viewGPUsPage(final Model model) {
 		return findPaginated(1, "name", "asc", model);
 	}
 
 	@GetMapping("/gpus/add_gpu")
-	public String addGPU(Model model) {
-		GPU gpu = new GPU();
-		model.addAttribute("gpu", gpu);
+	public String addGPU(final Model model) {
+		final GPU gPU = new GPU();
+		model.addAttribute("gPU", gPU);
 		return "new_gpu";
 	}
 
 	@PostMapping("/gpus/update_gpu")
-	public String updateGPU(@ModelAttribute("gpu") GPU gpu) {
-		gpuService.updateGPU(gpu);
+	public String updateGPU(@ModelAttribute("gpu") final GPU gPU) {
+		gPUService.updateGPU(gPU);
 		return "redirect:/gpus";
 	}
 
 	@GetMapping("/gpus/edit_gpu/{id}")
-	public String editGPU(@PathVariable(value="id") long id, Model model) {
-		GPU gpu = gpuService.getGPUById(id);
-		model.addAttribute("gpu", gpu);
+	public String editGPU(@PathVariable(value = "id") final long id, final Model model) {
+		final GPU gPU = gPUService.getGPUById(id);
+		model.addAttribute("gPU", gPU);
 		return "edit_gpu";
 	}
 
 	@GetMapping("/gpus/delete_gpu/{id}")
-	public String deleteGPU(@PathVariable(value="id") long id) {
-		this.gpuService.deleteGPUById(id);
+	public String deleteGPU(@PathVariable(value = "id") final long id) {
+		gPUService.deleteGPUById(id);
 		return "redirect:/gpus";
 	}
 
 	@GetMapping("/gpus/page/{pageNumber}")
-	public String findPaginated(@PathVariable(value="pageNumber") int pageNumber, @RequestParam("sortField") String sortField, @RequestParam("sortDirection") String sortDirection, Model model) {
-		int pageSize = 5;
-
-		Page<GPU> gpuPage = gpuService.findPaginated(pageNumber, pageSize, sortField, sortDirection);
-		List<GPU> gpus = gpuPage.getContent();
-
-		model.addAttribute("gpuPage", pageNumber);
-		model.addAttribute("totalGPUPages", gpuPage.getTotalPages());
-		model.addAttribute("totalGPUItems", gpuPage.getTotalElements());
-
+	public String findPaginated(@PathVariable(value = "pageNumber") final int pageNumber, @RequestParam("sortField") final String sortField, @RequestParam("sortDirection") final String sortDirection, final Model model) {
+		final int pageSize = 5;
+		final Page<GPU> gPUPage = gPUService.findPaginated(pageNumber, pageSize, sortField, sortDirection);
+		final List<GPU> gPUs = gPUPage.getContent();
+		model.addAttribute("gPUPage", pageNumber);
+		model.addAttribute("totalGPUPages", gPUPage.getTotalPages());
+		model.addAttribute("totalGPUItems", gPUPage.getTotalElements());
 		model.addAttribute("sortField", sortField);
 		model.addAttribute("sortDirection", sortDirection);
-		model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
-
-		model.addAttribute("gpus", gpus);
+		model.addAttribute("reverseSortDirection", "asc".equals(sortDirection) ? "desc" : "asc");
+		model.addAttribute("gPUs", gPUs);
 		return "gpus";
 	}
 }

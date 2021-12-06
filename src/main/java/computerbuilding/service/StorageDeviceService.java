@@ -24,31 +24,27 @@ public class StorageDeviceService implements StorageDeviceServiceInterface {
 	}
 
 	@Override
-	public void updateStorageDevice(StorageDevice storageDevice) {
-		this.storageDeviceRepository.save(storageDevice);
+	public void updateStorageDevice(final StorageDevice storageDevice) {
+		storageDeviceRepository.save(storageDevice);
 	}
 
 	@Override
-	public StorageDevice getStorageDeviceById(long id) {
-		Optional<StorageDevice> optional = storageDeviceRepository.findById(id);
-		StorageDevice storageDevice = null;
-		if (optional.isPresent()) {
-			storageDevice = optional.get();
-		} else {
+	public StorageDevice getStorageDeviceById(final long id) {
+		final Optional<StorageDevice> optional = storageDeviceRepository.findById(id);
+		if (!optional.isPresent())
 			throw new RuntimeException("Storage device not found for id: " + id);
-		}
-		return storageDevice;
+		return optional.get();
 	}
 
 	@Override
-	public void deleteStorageDeviceById(long id) {
-		this.storageDeviceRepository.deleteById(id);
+	public void deleteStorageDeviceById(final long id) {
+		storageDeviceRepository.deleteById(id);
 	}
 
 	@Override
-	public Page<StorageDevice> findPaginated(int pageNumber, int pageSize, String sortField, String sortDirection) {
-		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
-		Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-		return this.storageDeviceRepository.findAll(pageable);
+	public Page<StorageDevice> findPaginated(final int pageNumber, final int pageSize, final String sortField, final String sortDirection) {
+		final Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+		final Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+		return storageDeviceRepository.findAll(pageable);
 	}
 }

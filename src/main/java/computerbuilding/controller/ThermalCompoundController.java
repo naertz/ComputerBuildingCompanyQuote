@@ -21,51 +21,47 @@ public class ThermalCompoundController {
 	ThermalCompoundServiceInterface thermalCompoundService;
 
 	@GetMapping("/thermal_compounds")
-	public String viewThermalCompoundsPage(Model model) {
+	public String viewThermalCompoundsPage(final Model model) {
 		return findPaginated(1, "name", "asc", model);
 	}
 
 	@GetMapping("/thermal_compounds/add_thermal_compound")
-	public String addThermalCompound(Model model) {
-		ThermalCompound thermalCompound  = new ThermalCompound();
+	public String addThermalCompound(final Model model) {
+		final ThermalCompound thermalCompound = new ThermalCompound();
 		model.addAttribute("thermalCompound", thermalCompound);
 		return "new_thermal_compound";
 	}
 
 	@PostMapping("/thermal_compounds/update_thermal_compound")
-	public String updateThermalCompound(@ModelAttribute("thermalCompound") ThermalCompound thermalCompound) {
+	public String updateThermalCompound(@ModelAttribute("thermalCompound") final ThermalCompound thermalCompound) {
 		thermalCompoundService.updateThermalCompound(thermalCompound);
 		return "redirect:/thermal_compounds";
 	}
 
 	@GetMapping("/thermal_compounds/edit_thermal_compound/{id}")
-	public String editThermalCompound(@PathVariable(value="id") long id, Model model) {
-		ThermalCompound thermalCompound = thermalCompoundService.getThermalCompoundById(id);
+	public String editThermalCompound(@PathVariable(value = "id") final long id, final Model model) {
+		final ThermalCompound thermalCompound = thermalCompoundService.getThermalCompoundById(id);
 		model.addAttribute("thermalCompound", thermalCompound);
 		return "edit_thermal_compound";
 	}
 
 	@GetMapping("/thermal_compounds/delete_thermal_compound/{id}")
-	public String deleteThermalCompound(@PathVariable(value="id") long id) {
-		this.thermalCompoundService.deleteThermalCompoundById(id);
+	public String deleteThermalCompound(@PathVariable(value = "id") final long id) {
+		thermalCompoundService.deleteThermalCompoundById(id);
 		return "redirect:/thermal_compounds";
 	}
 
 	@GetMapping("/thermal_compounds/page/{pageNumber}")
-	public String findPaginated(@PathVariable(value="pageNumber") int pageNumber, @RequestParam("sortField") String sortField, @RequestParam("sortDirection") String sortDirection, Model model) {
-		int pageSize = 5;
-
-		Page<ThermalCompound> thermalCompoundPage = thermalCompoundService.findPaginated(pageNumber, pageSize, sortField, sortDirection);
-		List<ThermalCompound> thermalCompounds = thermalCompoundPage.getContent();
-
+	public String findPaginated(@PathVariable(value = "pageNumber") final int pageNumber, @RequestParam("sortField") final String sortField, @RequestParam("sortDirection") final String sortDirection, final Model model) {
+		final int pageSize = 5;
+		final Page<ThermalCompound> thermalCompoundPage = thermalCompoundService.findPaginated(pageNumber, pageSize, sortField, sortDirection);
+		final List<ThermalCompound> thermalCompounds = thermalCompoundPage.getContent();
 		model.addAttribute("thermalCompoundPage", pageNumber);
 		model.addAttribute("totalThermalCompoundPages", thermalCompoundPage.getTotalPages());
 		model.addAttribute("totalThermalCompoundItems", thermalCompoundPage.getTotalElements());
-
 		model.addAttribute("sortField", sortField);
 		model.addAttribute("sortDirection", sortDirection);
-		model.addAttribute("reverseSortDirection", sortDirection.equals("asc") ? "desc" : "asc");
-
+		model.addAttribute("reverseSortDirection", "asc".equals(sortDirection) ? "desc" : "asc");
 		model.addAttribute("thermalCompounds", thermalCompounds);
 		return "thermal_compounds";
 	}

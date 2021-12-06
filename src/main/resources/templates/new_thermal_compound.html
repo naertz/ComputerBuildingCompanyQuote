@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <h1>Computer Building Company - Add Thermal Compound</h1>
-            <h2>Enter new thermal compound to use for customers' builds.</h2>
+            <h2>Enter new thermal compound to use for the customers' builds.</h2>
             <form th:object="${thermalCompound}" th:action="@{/thermal_compounds/update_thermal_compound}" method="POST">
                 <input class="form-control mb-4 col-4" type="text" name="name" placeholder="Compound Name" size="128" th:field="*{name}">
                 <input class="form-control mb-4 col-4" type="text" name="amount" placeholder="Amount" size="16" th:field="*{amount}">

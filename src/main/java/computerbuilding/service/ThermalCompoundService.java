@@ -24,31 +24,27 @@ public class ThermalCompoundService implements ThermalCompoundServiceInterface {
 	}
 
 	@Override
-	public void updateThermalCompound(ThermalCompound thermalCompound) {
-		this.thermalCompoundRepository.save(thermalCompound);
+	public void updateThermalCompound(final ThermalCompound thermalCompound) {
+		thermalCompoundRepository.save(thermalCompound);
 	}
 
 	@Override
-	public ThermalCompound getThermalCompoundById(long id) {
-		Optional<ThermalCompound> optional = thermalCompoundRepository.findById(id);
-		ThermalCompound thermalCompound = null;
-		if (optional.isPresent()) {
-			thermalCompound = optional.get();
-		} else {
+	public ThermalCompound getThermalCompoundById(final long id) {
+		final Optional<ThermalCompound> optional = thermalCompoundRepository.findById(id);
+		if (!optional.isPresent())
 			throw new RuntimeException("Thermal compound not found for id: " + id);
-		}
-		return thermalCompound;
+		return optional.get();
 	}
 
 	@Override
-	public void deleteThermalCompoundById(long id) {
-		this.thermalCompoundRepository.deleteById(id);
+	public void deleteThermalCompoundById(final long id) {
+		thermalCompoundRepository.deleteById(id);
 	}
 
 	@Override
-	public Page<ThermalCompound> findPaginated(int pageNumber, int pageSize, String sortField, String sortDirection) {
-		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
-		Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-		return this.thermalCompoundRepository.findAll(pageable);
+	public Page<ThermalCompound> findPaginated(final int pageNumber, final int pageSize, final String sortField, final String sortDirection) {
+		final Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+		final Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+		return thermalCompoundRepository.findAll(pageable);
 	}
 }

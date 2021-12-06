@@ -13,7 +13,7 @@
             <a th:href="@{/motherboards/add_motherboard}" class="btn btn-dark btn-sm mb-3">Add a motherboard</a>
             <a th:href="@{/cpus}" class="btn btn-secondary btn-sm mb-3">CPUs</a>
             <a th:href="@{/ram}" class="btn btn-secondary btn-sm mb-3">RAM</a>
-            <a th:href="@{/gpus}" class="btn btn-secondary btn-sm mb-3">GPU</a>
+            <a th:href="@{/gpus}" class="btn btn-secondary btn-sm mb-3">GPUs</a>
             <a th:href="@{/thermal_compounds}" class="btn btn-secondary btn-sm mb-3">Thermal Compounds</a>
             <a th:href="@{/storage_devices}" class="btn btn-secondary btn-sm mb-3">Storage Devices</a>
             <a th:href="@{/fulfillments}" class="btn btn-primary btn-sm mb-3">View quote fulfillments</a>
@@ -39,10 +39,10 @@
                             <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=memorySlots&sortDirection=' + ${reverseSortDirection}}">Memory Slots</a>
                         </th>
                         <th>
-                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=pcieSlots&sortDirection=' + ${reverseSortDirection}}">PCI-E Slots</a>
+                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=pCIESlots&sortDirection=' + ${reverseSortDirection}}">PCI-E Slots</a>
                         </th>
                         <th>
-                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=sataPorts&sortDirection=' + ${reverseSortDirection}}">SATA Ports</a>
+                            <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=sATAPorts&sortDirection=' + ${reverseSortDirection}}">SATA Ports</a>
                         </th>
                         <th>
                             <a th:href="@{'/motherboards/page/' + ${motherboardPage} + '?sortField=m2Slots&sortDirection=' + ${reverseSortDirection}}">M.2 Slots</a>
@@ -61,8 +61,8 @@
                         <td th:text="${motherboard.socket}"></td>
                         <td th:text="${motherboard.chipset}"></td>
                         <td th:text="${motherboard.memorySlots}"></td>
-                        <td th:text="${motherboard.pcieSlots}"></td>
-                        <td th:text="${motherboard.sataPorts}"></td>
+                        <td th:text="${motherboard.pCIESlots}"></td>
+                        <td th:text="${motherboard.sATAPorts}"></td>
                         <td th:text="${motherboard.m2Slots}"></td>
                         <td th:text="${motherboard.price}"></td>
                         <td>

@@ -3,7 +3,6 @@
  * CIS-175 - Fall 2021
  * Nov 16, 2021
  */
-
 package computerbuilding.service;
 
 import java.util.List;
@@ -30,31 +29,27 @@ public class MotherboardService implements MotherboardServiceInterface {
 	}
 
 	@Override
-	public void updateMotherboard(Motherboard motherboard) {
-		this.motherboardRepository.save(motherboard);
+	public void updateMotherboard(final Motherboard motherboard) {
+		motherboardRepository.save(motherboard);
 	}
 
 	@Override
-	public Motherboard getMotherboardById(long id) {
-		Optional<Motherboard> optional = motherboardRepository.findById(id);
-		Motherboard motherboard = null;
-		if (optional.isPresent()) {
-			motherboard = optional.get();
-		} else {
+	public Motherboard getMotherboardById(final long id) {
+		final Optional<Motherboard> optional = motherboardRepository.findById(id);
+		if (!optional.isPresent())
 			throw new RuntimeException("Motherboard not found for id: " + id);
-		}
-		return motherboard;
+		return optional.get();
 	}
 
 	@Override
-	public void deleteMotherboardById(long id) {
-		this.motherboardRepository.deleteById(id);
+	public void deleteMotherboardById(final long id) {
+		motherboardRepository.deleteById(id);
 	}
 
 	@Override
-	public Page<Motherboard> findPaginated(int pageNumber, int pageSize, String sortField, String sortDirection) {
-		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
-		Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
-		return this.motherboardRepository.findAll(pageable);
+	public Page<Motherboard> findPaginated(final int pageNumber, final int pageSize, final String sortField, final String sortDirection) {
+		final Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() : Sort.by(sortField).descending();
+		final Pageable pageable = PageRequest.of(pageNumber - 1, pageSize, sort);
+		return motherboardRepository.findAll(pageable);
 	}
 }

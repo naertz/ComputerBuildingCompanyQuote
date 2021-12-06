@@ -13,7 +13,7 @@
             <a th:href="@{/motherboards}" class="btn btn-secondary btn-sm mb-3">Motherboards</a>
             <a th:href="@{/cpus}" class="btn btn-secondary btn-sm mb-3">CPUs</a>
             <a th:href="@{/ram}" class="btn btn-secondary btn-sm mb-3">RAM</a>
-            <a th:href="@{/gpus}" class="btn btn-secondary btn-sm mb-3">GPU</a>
+            <a th:href="@{/gpus}" class="btn btn-secondary btn-sm mb-3">GPUs</a>
             <a th:href="@{/thermal_compounds}" class="btn btn-secondary btn-sm mb-3">Thermal Compounds</a>
             <a th:href="@{/storage_devices}" class="btn btn-secondary btn-sm mb-3">Storage Devices</a>
             <a th:href="@{/fulfillments/create_fulfillment}" class="btn btn-primary btn-sm mb-3">Create a new quote fulfillment</a>
@@ -45,6 +45,12 @@
                             <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=gPU.name&sortDirection=' + ${reverseSortDirection}}">GPU</a>
                         </th>
                         <th>
+                            <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=thermalCompound.name&sortDirection=' + ${reverseSortDirection}}">Thermal Compound</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=storageDevice.name&sortDirection=' + ${reverseSortDirection}}">Storage Device</a>
+                        </th>
+                        <th>
                             <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=totalCost&sortDirection=' + ${reverseSortDirection}}">Total Cost</a>
                         </th>
                         <th>
@@ -63,6 +69,8 @@
                         <td th:text="${customerQuoteFulfillment.cPU.name}"></td>
                         <td th:text="${customerQuoteFulfillment.rAM.name}"></td>
                         <td th:text="${customerQuoteFulfillment.gPU.name}"></td>
+                        <td th:text="${customerQuoteFulfillment.thermalCompound.name}"></td>
+                        <td th:text="${customerQuoteFulfillment.storageDevice.name}"></td>
                         <td th:text="${customerQuoteFulfillment.totalCost}"></td>
                         <td th:text="${customerQuoteFulfillment.customerConfirmation}"></td>
                         <td>

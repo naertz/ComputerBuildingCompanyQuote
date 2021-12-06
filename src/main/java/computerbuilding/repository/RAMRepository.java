@@ -6,4 +6,4 @@ import org.springframework.stereotype.Repository;
 import computerbuilding.beans.RAM;
 
 @Repository
-public interface RAMRepository extends JpaRepository<RAM, Long> { }
+public interface RAMRepository extends JpaRepository<RAM, Long> {}

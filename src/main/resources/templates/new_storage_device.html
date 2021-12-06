@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <h1>Computer Building Company - Add Storage</h1>
-            <h2>Enter a new storage device to use for customers' builds.</h2>
+            <h2>Enter a new storage device to use for the customers' builds.</h2>
             <form th:object="${storageDevice}" th:action="@{/storage_devices/update_storage_device}" method="POST">
                 <input class="form-control mb-4 col-4" type="text" name="name" placeholder="Name" size="128" th:field="*{name}">
                 <input class="form-control mb-4 col-4" type="text" name="brand" placeholder="Brand" size="16" th:field="*{brand}">

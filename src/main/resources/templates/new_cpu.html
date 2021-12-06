@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <h1>Computer Building Company - Add CPU</h1>
-            <h2>Enter a new CPU to use for customers' builds.</h2>
+            <h2>Enter a new CPU to use for the customers' builds.</h2>
             <form th:object="${cPU}" th:action="@{/cpus/update_cpu}" method="POST">
                 <input class="form-control mb-4 col-4" type="text" name="name" placeholder="CPU Name" size="128" th:field="*{name}">
                 <input class="form-control mb-4 col-4" type="text" name="brand" placeholder="Brand" size="16" th:field="*{brand}">

@@ -23,23 +23,23 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name="thermal_compound")
+@Table(name = "thermal_compound")
 public class ThermalCompound {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="thermal_compound_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "thermal_compound_id")
 	private long id;
 	@NonNull
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
 	@NonNull
-	@Column(name="amount")
+	@Column(name = "amount")
 	private String amount;
 	@NonNull
-	@Column(name="material_base")
+	@Column(name = "material_base")
 	private String materialBase;
-	@Column(name="price")
+	@Column(name = "price")
 	private float price;
-	@OneToMany(targetEntity=CustomerQuoteFulfillment.class, mappedBy="thermalCompound", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)
+	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "thermalCompound", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }
