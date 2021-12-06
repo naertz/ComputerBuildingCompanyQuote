@@ -17,6 +17,7 @@
             <a th:href="@{/gpus}" class="btn btn-outline-secondary btn-sm mb-3">GPUs</a>
             <a th:href="@{/thermal_compounds}" class="btn btn-outline-secondary btn-sm mb-3">Thermal Compounds</a>
             <a th:href="@{/storage_devices}" class="btn btn-outline-secondary btn-sm mb-3">Storage Devices</a>
+            <a th:href="@{/psus}" class="btn btn-outline-secondary btn-sm mb-3">PSUs</a>
             <a th:href="@{/fulfillments/create_fulfillment}" class="btn btn-primary btn-sm mb-3">Create a new quote fulfillment</a>
             <table border="1" class="table table-striped table-responsive-md">
                 <thead>
@@ -52,6 +53,9 @@
                             <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=storageDevice.name&sortDirection=' + ${reverseSortDirection}}">Storage Device</a>
                         </th>
                         <th>
+                            <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=pSU.name&sortDirection=' + ${reverseSortDirection}}">PSU</a>
+                        </th>
+                        <th>
                             <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=totalCost&sortDirection=' + ${reverseSortDirection}}">Total Cost</a>
                         </th>
                         <th>
@@ -72,6 +76,7 @@
                         <td th:text="${customerQuoteFulfillment.gPU.name}"></td>
                         <td th:text="${customerQuoteFulfillment.thermalCompound.name}"></td>
                         <td th:text="${customerQuoteFulfillment.storageDevice.name}"></td>
+                        <td th:text="${customerQuoteFulfillment.pSU.name}"></td>
                         <td th:text="${customerQuoteFulfillment.totalCost}"></td>
                         <td th:text="${customerQuoteFulfillment.customerConfirmation}"></td>
                         <td>

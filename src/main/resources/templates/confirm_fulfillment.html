@@ -20,6 +20,7 @@
                 <input type="hidden" th:field="*{gPU.id}">
                 <input type="hidden" th:field="*{thermalCompound.id}">
                 <input type="hidden" th:field="*{storageDevice.id}">
+                <input type="hidden" th:field="*{pSU.id}">
                 <table border="1" class="table table-striped table-responsive-md">
                     <thead>
                         <tr>
@@ -195,6 +196,32 @@
                             <td th:text="*{storageDevice.writeSpeed}"></td>
                             <td th:text="*{storageDevice.rPM}"></td>
                             <td th:text="*{storageDevice.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Form Factor</th>
+                            <th>Modular</th>
+                            <th>Efficiency Rating</th>
+                            <th>Wattage</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td th:text="*{pSU.id}"></td>
+                            <td th:text="*{pSU.name}"></td>
+                            <td th:text="*{pSU.brand}"></td>
+                            <td th:text="*{pSU.formFactor}"></td>
+                            <td th:text="*{pSU.modular}"></td>
+                            <td th:text="*{pSU.efficiencyRating}"></td>
+                            <td th:text="*{pSU.wattage}"></td>
+                            <td th:text="*{pSU.price}"></td>
                         </tr>
                     </tbody>
                 </table>

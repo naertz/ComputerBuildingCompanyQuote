@@ -60,6 +60,10 @@ public class CustomerQuoteFulfillment {
 	@ManyToOne(targetEntity = StorageDevice.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "storage_device_id_fk", referencedColumnName = "storage_device_id")
 	private StorageDevice storageDevice;
+	@NonNull
+	@ManyToOne(targetEntity = PSU.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "psu_id_fk", referencedColumnName = "psu_id")
+	private PSU pSU;
 	@Column(name = "total_cost")
 	private double totalCost;
 	@Column(name = "customer_confirmation")
