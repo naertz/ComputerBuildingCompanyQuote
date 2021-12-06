@@ -64,6 +64,10 @@ public class CustomerQuoteFulfillment {
 	@ManyToOne(targetEntity = PSU.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "psu_id_fk", referencedColumnName = "psu_id")
 	private PSU pSU;
+	@NonNull
+	@ManyToOne(targetEntity = Monitor.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "monitor_id_fk", referencedColumnName = "monitor_id")
+	private Monitor monitor;
 	@Column(name = "total_cost")
 	private double totalCost;
 	@Column(name = "customer_confirmation")

@@ -22,6 +22,7 @@ import computerbuilding.service.CPUServiceInterface;
 import computerbuilding.service.CustomerQuoteFulfillmentServiceInterface;
 import computerbuilding.service.CustomerQuoteRequestServiceInterface;
 import computerbuilding.service.GPUServiceInterface;
+import computerbuilding.service.MonitorServiceInterface;
 import computerbuilding.service.MotherboardServiceInterface;
 import computerbuilding.service.PSUServiceInterface;
 import computerbuilding.service.RAMServiceInterface;
@@ -48,6 +49,8 @@ public class CustomerQuoteFulfillmentController {
 	StorageDeviceServiceInterface storageDeviceService;
 	@Autowired
 	PSUServiceInterface pSUService;
+	@Autowired
+	MonitorServiceInterface monitorService;
 
 	@GetMapping("/fulfillments")
 	public String viewFulfillmentsPage(final Model model) {
@@ -66,6 +69,7 @@ public class CustomerQuoteFulfillmentController {
 		model.addAttribute("thermalCompounds", thermalCompoundService.getAllThermalCompounds());
 		model.addAttribute("storageDevices", storageDeviceService.getAllStorageDevices());
 		model.addAttribute("pSUs", pSUService.getAllPSUs());
+		model.addAttribute("monitors", monitorService.getAllMonitors());
 		return "new_fulfillment";
 	}
 
@@ -94,6 +98,7 @@ public class CustomerQuoteFulfillmentController {
 		model.addAttribute("thermalCompounds", thermalCompoundService.getAllThermalCompounds());
 		model.addAttribute("storageDevices", storageDeviceService.getAllStorageDevices());
 		model.addAttribute("pSUs", pSUService.getAllPSUs());
+		model.addAttribute("monitors", monitorService.getAllMonitors());
 		return "edit_fulfillment";
 	}
 

@@ -216,6 +216,38 @@
                         </tr>
                     </tbody>
                 </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Panel Type</th>
+                            <th>Frame Sync</th>
+                            <th>Screen Size</th>
+                            <th>Resolution Width</th>
+                            <th>Resolution Height</th>
+                            <th>Refresh Rate</th>
+                            <th>Response Time</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="monitor: ${monitors}">
+                            <td><input type="radio" name="monitors" th:field="*{monitor.id}" th:value="${monitor.id}"></td>
+                            <td th:text="${monitor.name}"></td>
+                            <td th:text="${monitor.brand}"></td>
+                            <td th:text="${monitor.panelType}"></td>
+                            <td th:text="${monitor.frameSync}"></td>
+                            <td th:text="${monitor.screenSize}"></td>
+                            <td th:text="${monitor.resolutionWidth}"></td>
+                            <td th:text="${monitor.resolutionHeight}"></td>
+                            <td th:text="${monitor.refreshRate}"></td>
+                            <td th:text="${monitor.responseTime}"></td>
+                            <td th:text="${monitor.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
                 <input class="form-control mb-4 col-4" type="text" name="totalCost" placeholder="Total Cost" size="8" th:field="*{totalCost}">
                 <button class="btn btn-info col-2" type="submit">Submit Quote Fulfillment</button>
             </form>

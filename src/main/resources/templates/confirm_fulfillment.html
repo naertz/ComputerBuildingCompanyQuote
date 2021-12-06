@@ -21,6 +21,7 @@
                 <input type="hidden" th:field="*{thermalCompound.id}">
                 <input type="hidden" th:field="*{storageDevice.id}">
                 <input type="hidden" th:field="*{pSU.id}">
+                <input type="hidden" th:field="*{monitor.id}">
                 <table border="1" class="table table-striped table-responsive-md">
                     <thead>
                         <tr>
@@ -222,6 +223,38 @@
                             <td th:text="*{pSU.efficiencyRating}"></td>
                             <td th:text="*{pSU.wattage}"></td>
                             <td th:text="*{pSU.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Panel Type</th>
+                            <th>Frame Sync</th>
+                            <th>Screen Size</th>
+                            <th>Resolution Width</th>
+                            <th>Resolution Height</th>
+                            <th>Refresh Rate</th>
+                            <th>Response Time</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td th:text="*{monitor.id}"></td>
+                            <td th:text="*{monitor.name}"></td>
+                            <td th:text="*{monitor.brand}"></td>
+                            <td th:text="*{monitor.panelType}"></td>
+                            <td th:text="*{monitor.frameSync}"></td>
+                            <td th:text="*{monitor.screenSize}"></td>
+                            <td th:text="*{monitor.resolutionWidth}"></td>
+                            <td th:text="*{monitor.resolutionHeight}"></td>
+                            <td th:text="*{monitor.refreshRate}"></td>
+                            <td th:text="*{monitor.responseTime}"></td>
+                            <td th:text="*{monitor.price}"></td>
                         </tr>
                     </tbody>
                 </table>

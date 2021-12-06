@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="#">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Computer Building Company - Add Monitor</title>
+    </head>
+    <body>
+        <div class="container-fluid my-2">
+            <h1>Computer Building Company - Add Monitor</h1>
+            <h2>Enter a new monitor to use for the customers' builds.</h2>
+            <form th:object="${monitor}" th:action="@{/monitors/update_monitor}" method="POST">
+                <input class="form-control mb-4 col-4" type="text" name="name" placeholder="Monitor Name" size="128" th:field="*{name}">
+                <input class="form-control mb-4 col-4" type="text" name="brand" placeholder="Brand" size="32" th:field="*{brand}">
+                <input class="form-control mb-4 col-4" type="text" name="panelType" placeholder="Panel Type" size="8" th:field="*{panelType}">
+                <input class="form-control mb-4 col-4" type="text" name="frameSync" placeholder="Frame Sync" size="32" th:field="*{frameSync}">
+                <input class="form-control mb-4 col-4" type="text" name="screenSize" placeholder="Screen Size" size="8" th:field="*{screenSize}">
+                <input class="form-control mb-4 col-4" type="text" name="resolutionWidth" placeholder="Resolution Width" size="8" th:field="*{resolutionWidth}">
+                <input class="form-control mb-4 col-4" type="text" name="resolutionHeight" placeholder="Resolution Height" size="8" th:field="*{resolutionHeight}">
+                <input class="form-control mb-4 col-4" type="text" name="refreshRate" placeholder="Refresh Rate" size="8" th:field="*{refreshRate}">
+                <input class="form-control mb-4 col-4" type="text" name="responseTime" placeholder="Response Time" size="8" th:field="*{responseTime}">
+                <input class="form-control mb-4 col-4" type="text" name="price" placeholder="Price" size="8" th:field="*{price}">
+                <button class="btn btn-info col-2" type="submit">Submit Monitor</button>
+            </form>
+            <a th:href="@{/monitors}">View Monitors</a>
+        </div>
+    </body>
+</html>
