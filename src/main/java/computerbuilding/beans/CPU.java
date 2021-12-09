@@ -51,6 +51,6 @@ public class CPU {
 	private double cPUSpeed;
 	@Column(name = "price")
 	private double price;
-	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "cPU", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "cPU", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

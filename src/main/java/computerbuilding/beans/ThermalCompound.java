@@ -40,6 +40,6 @@ public class ThermalCompound {
 	private String materialBase;
 	@Column(name = "price")
 	private float price;
-	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "thermalCompound", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "thermalCompound", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

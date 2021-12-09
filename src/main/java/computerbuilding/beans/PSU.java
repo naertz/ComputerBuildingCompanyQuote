@@ -53,6 +53,6 @@ public class PSU {
 	private int wattage;
 	@Column(name = "price")
 	private double price;
-	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "pSU", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "pSU", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

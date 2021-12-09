@@ -45,6 +45,6 @@ public class StorageDevice {
 	private double rPM;
 	@Column(name = "price")
 	private double price;
-	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "storageDevice", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "storageDevice", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

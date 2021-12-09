@@ -59,6 +59,6 @@ public class Keyboard {
 	private int sizePercent;
 	@Column(name = "price")
 	private double price;
-	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "keyboard", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "keyboard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

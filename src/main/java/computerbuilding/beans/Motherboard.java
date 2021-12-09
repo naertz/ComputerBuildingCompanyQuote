@@ -56,6 +56,6 @@ public class Motherboard {
 	private int m2Slots;
 	@Column(name = "price")
 	private double price;
-	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "motherboard", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "motherboard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

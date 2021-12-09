@@ -50,6 +50,6 @@ public class CustomerQuoteRequest {
 	private String computerNeedsDescription;
 	@Column(name = "budget")
 	private double budget;
-	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "customerQuoteRequest", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "customerQuoteRequest", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }
