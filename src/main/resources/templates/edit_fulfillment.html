@@ -196,6 +196,30 @@
                         <tr>
                             <th>Select</th>
                             <th>Name</th>
+                            <th>Bit Rate</th>
+                            <th>kHz</th>
+                            <th>Max Decibels</th>
+                            <th>Max Channels</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="soundCard: ${soundCards}">
+                            <td><input type="radio" name="soundCards" th:field="*{soundCard.id}" th:value="${soundCard.id}"></td>
+	                        <td th:text="${soundCard.name}"></td>
+	                        <td th:text="${soundCard.bit_rate}"></td>
+	                        <td th:text="${soundCard.kHz}"></td>
+	                        <td th:text="${soundCard.max_db}"></td>
+	                        <td th:text="${soundCard.max_channels}"></td>
+	                        <td th:text="${soundCard.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Name</th>
                             <th>Brand</th>
                             <th>Form Factor</th>
                             <th>Modular</th>

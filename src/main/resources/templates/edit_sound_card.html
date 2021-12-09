@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="#">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Computer Building Company - Edit Sound Card</title>
+    </head>
+    <body>
+        <div class="container-fluid my-2">
+            <h1>Computer Building Company - Edit Sound Card</h1>
+            <h2>Edit the Sound Card.</h2>
+            <form th:object="${soundCard}" th:action="@{/sound_cards/update_sound_card}" method="POST">
+            <input type="hidden" th:field="*{id}">
+            	<input class="form-control mb-4 col-4" type="text" name="name" placeholder="Name" size="128" th:field="*{name}">
+                <input class="form-control mb-4 col-4" type="text" name="bit_rate" placeholder="Bit Rate" size="16" th:field="*{bit_rate}">
+                <input class="form-control mb-4 col-4" type="text" name="kHz" placeholder="Frequency in kHz" size="16" th:field="*{kHz}">
+                <input class="form-control mb-4 col-4" type="text" name="max_db" placeholder="Max Decibels" size="16" th:field="*{max_db}">
+                <input class="form-control mb-4 col-4" type="text" name="max_channels" placeholder="Max Surround Sound Channels" size="16" th:field="*{max_channels}">
+                <input class="form-control mb-4 col-4" type="text" name="price" placeholder="Price" size="16" th:field="*{price}">
+                <button class="btn btn-info col-2" type="submit">Update Sound Card</button>
+            </form>
+            <a th:href="@{/sound_cards}">View Sound Card</a>
+        </div>
+    </body>
+</html>
