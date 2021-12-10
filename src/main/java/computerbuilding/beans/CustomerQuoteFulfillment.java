@@ -45,6 +45,14 @@ public class CustomerQuoteFulfillment {
 	@JoinColumn(name = "cpu_id_fk", referencedColumnName = "cpu_id")
 	private CPU cPU;
 	@NonNull
+	@ManyToOne(targetEntity = CPUCooler.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "cpu_cooler_id_fk", referencedColumnName = "cpu_cooler_id")
+	private CPUCooler cPUCooler;
+	@NonNull
+	@ManyToOne(targetEntity = ThermalCompound.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "thermal_compound_id_fk", referencedColumnName = "thermal_compound_id")
+	private ThermalCompound thermalCompound;
+	@NonNull
 	@ManyToOne(targetEntity = RAM.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ram_id_fk", referencedColumnName = "ram_id")
 	private RAM rAM;
@@ -53,13 +61,13 @@ public class CustomerQuoteFulfillment {
 	@JoinColumn(name = "gpu_id_fk", referencedColumnName = "gpu_id")
 	private GPU gPU;
 	@NonNull
-	@ManyToOne(targetEntity = ThermalCompound.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "thermal_compound_id_fk", referencedColumnName = "thermal_compound_id")
-	private ThermalCompound thermalCompound;
-	@NonNull
 	@ManyToOne(targetEntity = StorageDevice.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "storage_device_id_fk", referencedColumnName = "storage_device_id")
 	private StorageDevice storageDevice;
+	@NonNull
+	@ManyToOne(targetEntity = SoundCard.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "sound_card_id_fk", referencedColumnName = "sound_card_id")
+	private SoundCard soundCard;
 	@NonNull
 	@ManyToOne(targetEntity = PSU.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "psu_id_fk", referencedColumnName = "psu_id")
@@ -72,15 +80,6 @@ public class CustomerQuoteFulfillment {
 	@ManyToOne(targetEntity = Keyboard.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "keyboard_id_fk", referencedColumnName = "keyboard_id")
 	private Keyboard keyboard;
-	@NonNull
-	@ManyToOne(targetEntity = SoundCard.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "sound_card_id_fk", referencedColumnName = "sound_card_id")
-	private SoundCard soundCard;
-	@NonNull
-	@ManyToOne(targetEntity = CPUCooler.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "cpu_cooler_id_fk", referencedColumnName = "cpu_cooler_id")
-	private CPUCooler cPUCooler;
-	
 	@Column(name = "total_cost")
 	private double totalCost;
 	@Column(name = "customer_confirmation")

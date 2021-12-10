@@ -43,24 +43,23 @@ public class CustomerQuoteFulfillmentController {
 	@Autowired
 	CPUServiceInterface cPUService;
 	@Autowired
+	CPUCoolerServiceInterface cPUCoolerService;
+	@Autowired
+	ThermalCompoundServiceInterface thermalCompoundService;
+	@Autowired
 	RAMServiceInterface rAMService;
 	@Autowired
 	GPUServiceInterface gPUService;
 	@Autowired
-	ThermalCompoundServiceInterface thermalCompoundService;
-	@Autowired
 	StorageDeviceServiceInterface storageDeviceService;
+	@Autowired
+	SoundCardServiceInterface soundCardService;
 	@Autowired
 	PSUServiceInterface pSUService;
 	@Autowired
 	MonitorServiceInterface monitorService;
 	@Autowired
 	KeyboardServiceInterface keyboardService;
-	@Autowired
-	SoundCardServiceInterface soundCardService;
-	@Autowired
-	CPUCoolerServiceInterface cPUCoolerService;
-	
 
 	@GetMapping("/fulfillments")
 	public String viewFulfillmentsPage(final Model model) {
@@ -74,15 +73,15 @@ public class CustomerQuoteFulfillmentController {
 		model.addAttribute("customerQuoteRequests", customerQuoteRequestService.getAllCustomerQuoteRequests());
 		model.addAttribute("motherboards", motherboardService.getAllMotherboards());
 		model.addAttribute("cPUs", cPUService.getAllCPUs());
+		model.addAttribute("cPUCoolers", cPUCoolerService.getAllCPUCoolers());
+		model.addAttribute("thermalCompounds", thermalCompoundService.getAllThermalCompounds());
 		model.addAttribute("rAM", rAMService.getAllRAM());
 		model.addAttribute("gPUs", gPUService.getAllGPUs());
-		model.addAttribute("thermalCompounds", thermalCompoundService.getAllThermalCompounds());
 		model.addAttribute("storageDevices", storageDeviceService.getAllStorageDevices());
+		model.addAttribute("soundCards", soundCardService.getAllSoundCards());
 		model.addAttribute("pSUs", pSUService.getAllPSUs());
 		model.addAttribute("monitors", monitorService.getAllMonitors());
 		model.addAttribute("keyboards", keyboardService.getAllKeyboards());
-		model.addAttribute("soundCard", soundCardService.getAllSoundCards());
-		model.addAttribute("cPUCoolers", cPUCoolerService.getAllCPUCoolers());
 		return "new_fulfillment";
 	}
 
@@ -106,15 +105,15 @@ public class CustomerQuoteFulfillmentController {
 		model.addAttribute("customerQuoteRequests", customerQuoteRequestService.getAllCustomerQuoteRequests());
 		model.addAttribute("motherboards", motherboardService.getAllMotherboards());
 		model.addAttribute("cPUs", cPUService.getAllCPUs());
+		model.addAttribute("cPUCoolers", cPUCoolerService.getAllCPUCoolers());
+		model.addAttribute("thermalCompounds", thermalCompoundService.getAllThermalCompounds());
 		model.addAttribute("rAM", rAMService.getAllRAM());
 		model.addAttribute("gPUs", gPUService.getAllGPUs());
-		model.addAttribute("thermalCompounds", thermalCompoundService.getAllThermalCompounds());
 		model.addAttribute("storageDevices", storageDeviceService.getAllStorageDevices());
+		model.addAttribute("soundCards", soundCardService.getAllSoundCards());
 		model.addAttribute("pSUs", pSUService.getAllPSUs());
 		model.addAttribute("monitors", monitorService.getAllMonitors());
 		model.addAttribute("keyboards", keyboardService.getAllKeyboards());
-		model.addAttribute("soundCard", soundCardService.getAllSoundCards());
-		model.addAttribute("cPUCoolers", cPUCoolerService.getAllCPUCoolers());
 		return "edit_fulfillment";
 	}
 

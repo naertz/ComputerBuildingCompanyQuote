@@ -32,7 +32,7 @@ public class CPUCoolerService implements CPUCoolerServiceInterface {
 	public CPUCooler getCPUCoolerById(final long id) {
 		final Optional<CPUCooler> optional = cPUCoolerRepository.findById(id);
 		if (!optional.isPresent())
-			throw new RuntimeException("CPU Cooler not found for id: " + id);
+			throw new RuntimeException("CPU cooler not found for id: " + id);
 		return optional.get();
 	}
 

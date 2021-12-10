@@ -13,12 +13,12 @@
             <a th:href="@{/}" class="btn btn-outline-primary btn-sm mb-3">View quote requests</a>
             <a th:href="@{/motherboards}" class="btn btn-outline-secondary btn-sm mb-3">Motherboards</a>
             <a th:href="@{/cpus}" class="btn btn-outline-secondary btn-sm mb-3">CPUs</a>
+            <a th:href="@{/cpu_coolers}" class="btn btn-outline-secondary btn-sm mb-3">CPU Coolers</a>
+            <a th:href="@{/thermal_compounds}" class="btn btn-outline-secondary btn-sm mb-3">Thermal Compounds</a>
             <a th:href="@{/ram}" class="btn btn-outline-secondary btn-sm mb-3">RAM</a>
             <a th:href="@{/gpus}" class="btn btn-outline-secondary btn-sm mb-3">GPUs</a>
-            <a th:href="@{/thermal_compounds}" class="btn btn-outline-secondary btn-sm mb-3">Thermal Compounds</a>
             <a th:href="@{/storage_devices}" class="btn btn-outline-secondary btn-sm mb-3">Storage Devices</a>
             <a th:href="@{/sound_cards}" class="btn btn-outline-secondary btn-sm mb-3">Sound Cards</a>
-            <a th:href="@{/cpu_coolers}" class="btn btn-outline-secondary btn-sm mb-3">CPU Coolers</a>
             <a th:href="@{/psus}" class="btn btn-outline-secondary btn-sm mb-3">PSUs</a>
             <a th:href="@{/monitors}" class="btn btn-outline-secondary btn-sm mb-3">Monitors</a>
             <a th:href="@{/keyboards}" class="btn btn-outline-secondary btn-sm mb-3">Keyboards</a>
@@ -45,22 +45,22 @@
                             <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=cPU.name&sortDirection=' + ${reverseSortDirection}}">CPU</a>
                         </th>
                         <th>
+                            <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=cPUCooler.name&sortDirection=' + ${reverseSortDirection}}">CPU Cooler</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=thermalCompound.name&sortDirection=' + ${reverseSortDirection}}">Thermal Compound</a>
+                        </th>
+                        <th>
                             <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=rAM.name&sortDirection=' + ${reverseSortDirection}}">RAM</a>
                         </th>
                         <th>
                             <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=gPU.name&sortDirection=' + ${reverseSortDirection}}">GPU</a>
                         </th>
                         <th>
-                            <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=thermalCompound.name&sortDirection=' + ${reverseSortDirection}}">Thermal Compound</a>
-                        </th>
-                        <th>
                             <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=storageDevice.name&sortDirection=' + ${reverseSortDirection}}">Storage Device</a>
                         </th>
                         <th>
                             <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=soundCard.name&sortDirection=' + ${reverseSortDirection}}">Sound Card</a>
-                        </th>
-                        <th>
-                            <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=cPUCooler&sortDirection=' + ${reverseSortDirection}}">CPU Cooler</a>
                         </th>
                         <th>
                             <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=pSU.name&sortDirection=' + ${reverseSortDirection}}">PSU</a>
@@ -88,12 +88,12 @@
                         <td th:text="${customerQuoteFulfillment.customerQuoteRequest.lastName}"></td>
                         <td th:text="${customerQuoteFulfillment.motherboard.name}"></td>
                         <td th:text="${customerQuoteFulfillment.cPU.name}"></td>
+                        <td th:text="${customerQuoteFulfillment.cPUCooler.name}"></td>
+                        <td th:text="${customerQuoteFulfillment.thermalCompound.name}"></td>
                         <td th:text="${customerQuoteFulfillment.rAM.name}"></td>
                         <td th:text="${customerQuoteFulfillment.gPU.name}"></td>
-                        <td th:text="${customerQuoteFulfillment.thermalCompound.name}"></td>
                         <td th:text="${customerQuoteFulfillment.storageDevice.name}"></td>
                         <td th:text="${customerQuoteFulfillment.soundCard.name}"></td>
-                        <td th:text="${customerQuoteFulfillment.cPUCooler.name}"></td>
                         <td th:text="${customerQuoteFulfillment.pSU.name}"></td>
                         <td th:text="${customerQuoteFulfillment.monitor.name}"></td>
                         <td th:text="${customerQuoteFulfillment.keyboard.name}"></td>

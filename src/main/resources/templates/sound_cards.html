@@ -13,12 +13,12 @@
             <a th:href="@{/}" class="btn btn-outline-primary btn-sm mb-3">View quote requests</a>
 			<a th:href="@{/motherboards}" class="btn btn-outline-secondary btn-sm mb-3">Motherboards</a>
 			<a th:href="@{/cpus}" class="btn btn-outline-secondary btn-sm mb-3">CPUs</a>
+			<a th:href="@{/cpu_coolers}" class="btn btn-outline-secondary btn-sm mb-3">CPU Coolers</a>
+			<a th:href="@{/thermal_compounds}" class="btn btn-outline-secondary btn-sm mb-3">Thermal Compounds</a>
             <a th:href="@{/ram}" class="btn btn-outline-secondary btn-sm mb-3">RAM</a>
             <a th:href="@{/gpus}" class="btn btn-outline-secondary btn-sm mb-3">GPUs</a>
-            <a th:href="@{/thermal_compounds}" class="btn btn-secondary btn-sm mb-3">Thermal compound</a>
             <a th:href="@{/storage_devices}" class="btn btn-outline-secondary btn-sm mb-3">Storage Devices</a>
-            <a th:href="@{/sound_cards/add_sound_card}" class="btn btn-outline-secondary btn-sm mb-3">Add a Sound Card</a>
-            <a th:href="@{/cpu_coolers}" class="btn btn-outline-secondary btn-sm mb-3">CPU Coolers</a>
+            <a th:href="@{/sound_cards/add_sound_card}" class="btn btn-secondary btn-sm mb-3">Add a sound card</a>
             <a th:href="@{/psus}" class="btn btn-outline-secondary btn-sm mb-3">PSUs</a>
             <a th:href="@{/monitors}" class="btn btn-outline-secondary btn-sm mb-3">Monitors</a>
             <a th:href="@{/keyboards}" class="btn btn-outline-secondary btn-sm mb-3">Keyboards</a>
@@ -33,16 +33,16 @@
                             <a th:href="@{'/sound_cards/page/' + ${soundCardPage} + '?sortField=name&sortDirection=' + ${reverseSortDirection}}">Name</a>
                         </th>
                         <th>
-                            <a th:href="@{'/sound_cards/page/' + ${soundCardPage} + '?sortField=bit_rate&sortDirection=' + ${reverseSortDirection}}">Bitrate</a>
+                            <a th:href="@{'/sound_cards/page/' + ${soundCardPage} + '?sortField=bitRate&sortDirection=' + ${reverseSortDirection}}">Bit Rate</a>
                         </th>
                         <th>
                             <a th:href="@{'/sound_cards/page/' + ${soundCardPage} + '?sortField=kHz&sortDirection=' + ${reverseSortDirection}}">kHz</a>
                         </th>
                         <th>
-                            <a th:href="@{'/sound_cards/page/' + ${soundCardPage} + '?sortField=max_db&sortDirection=' + ${reverseSortDirection}}">Max Decibels</a>
+                            <a th:href="@{'/sound_cards/page/' + ${soundCardPage} + '?sortField=maxDb&sortDirection=' + ${reverseSortDirection}}">Max Decibels</a>
                         </th>
                          <th>
-                            <a th:href="@{'/sound_cards/page/' + ${soundCardPage} + '?sortField=max_channels&sortDirection=' + ${reverseSortDirection}}">Max Channels</a>
+                            <a th:href="@{'/sound_cards/page/' + ${soundCardPage} + '?sortField=maxChannels&sortDirection=' + ${reverseSortDirection}}">Max Channels</a>
                         </th>
                          <th>
                             <a th:href="@{'/sound_cards/page/' + ${soundCardPage} + '?sortField=price&sortDirection=' + ${reverseSortDirection}}">Price</a>
@@ -54,10 +54,10 @@
                     <tr th:each="soundCard: ${soundCards}">
                         <td th:text="${soundCard.id}"></td>
                         <td th:text="${soundCard.name}"></td>
-                        <td th:text="${soundCard.bit_rate}"></td>
+                        <td th:text="${soundCard.bitRate}"></td>
                         <td th:text="${soundCard.kHz}"></td>
-                        <td th:text="${soundCard.max_db}"></td>
-                        <td th:text="${soundCard.max_channels}"></td>
+                        <td th:text="${soundCard.maxDb}"></td>
+                        <td th:text="${soundCard.maxChannels}"></td>
                         <td th:text="${soundCard.price}"></td>
                         <td>
                             <a th:href="@{/sound_cards/edit_sound_card/{id}(id=${soundCard.id})}" class="btn btn-primary">Edit</a>
@@ -69,7 +69,7 @@
             <div th:if="${totalSoundCardPages > 1}">
                 <div class="row col-sm-10">
                     <div class="col-sm-2">
-                        Total Thermal Compounds: [[${totalThermalCompoundItems}]]
+                        Total Sound Cards: [[${totalSoundCardItems}]]
                     </div>
                     <div class="col-sm-1">
                         <span th:each="i: ${#numbers.sequence(1, totalSoundCardPages)}">

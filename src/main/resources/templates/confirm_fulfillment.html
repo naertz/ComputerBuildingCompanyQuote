@@ -12,20 +12,20 @@
             <h1>Computer Building Company - Confirm Customer Quote Fulfillment</h1>
             <h2>Your quote is ready! You may accept or decline the quote.</h2>
             <form th:object="${customerQuoteFulfillment}" th:action="@{/fulfillments/update_fulfillment}" method="POST">
-            <input type="hidden" th:field="*{part.id}">
                 <input type="hidden" th:field="*{id}">
                 <input type="hidden" th:field="*{customerQuoteRequest.id}">
                 <input type="hidden" th:field="*{motherboard.id}">
                 <input type="hidden" th:field="*{cPU.id}">
+                <input type="hidden" th:field="*{cPUCooler.id}">
+                <input type="hidden" th:field="*{thermalCompound.id}">
                 <input type="hidden" th:field="*{rAM.id}">
                 <input type="hidden" th:field="*{gPU.id}">
-                <input type="hidden" th:field="*{thermalCompound.id}">
                 <input type="hidden" th:field="*{storageDevice.id}">
+                <input type="hidden" th:field="*{soundCard.id}">
                 <input type="hidden" th:field="*{pSU.id}">
                 <input type="hidden" th:field="*{monitor.id}">
                 <input type="hidden" th:field="*{keyboard.id}">
                 <input type="hidden" th:field="*{totalCost}">
-                <input type="hidden" th:field="*{cPUCooler.id}">
                 <table border="1" class="table table-striped table-responsive-md">
                     <thead>
                         <tr>
@@ -111,6 +111,50 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
+                            <th>Fan Size</th>
+                            <th>Connector Type</th>
+                            <th>Cooling Type</th>
+                            <th>Socket Compatibility</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td th:text="*{cPUCooler.id}"></td>
+                            <td th:text="*{cPUCooler.name}"></td>
+                            <td th:text="*{cPUCooler.fanSize}"></td>
+                            <td th:text="*{cPUCooler.connectorType}"></td>
+                            <td th:text="*{cPUCooler.coolingType}"></td>
+                            <td th:text="*{cPUCooler.socketCompatibility}"></td>
+                            <td th:text="*{cPUCooler.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Material Base</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td th:text="*{thermalCompound.id}"></td>
+                            <td th:text="*{thermalCompound.name}"></td>
+                            <td th:text="*{thermalCompound.amount}"></td>
+                            <td th:text="*{thermalCompound.materialBase}"></td>
+                            <td th:text="*{thermalCompound.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
                             <th>Generation</th>
                             <th>Speed</th>
                             <th>Capacity</th>
@@ -163,26 +207,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Amount</th>
-                            <th>Material Base</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td th:text="*{thermalCompound.id}"></td>
-                            <td th:text="*{thermalCompound.name}"></td>
-                            <td th:text="*{thermalCompound.amount}"></td>
-                            <td th:text="*{thermalCompound.materialBase}"></td>
-                            <td th:text="*{thermalCompound.price}"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table border="1" class="table table-striped table-responsive-md">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
                             <th>Brand</th>
                             <th>Capacity</th>
                             <th>Read Speed</th>
@@ -221,40 +245,14 @@
                     	<tr>
                     		<td th:text="*{soundCard.id}"></td>
 	                        <td th:text="*{soundCard.name}"></td>
-	                        <td th:text="*{soundCard.bit_rate}"></td>
+	                        <td th:text="*{soundCard.bitRate}"></td>
 	                        <td th:text="*{soundCard.kHz}"></td>
-	                        <td th:text="*{soundCard.max_db}"></td>
-	                        <td th:text="*{soundCard.max_channels}"></td>
+	                        <td th:text="*{soundCard.maxDb}"></td>
+	                        <td th:text="*{soundCard.maxChannels}"></td>
 	                        <td th:text="*{soundCard.price}"></td>
                         </tr>
                     </tbody>
                 </table>
-                
-                <table border="1" class="table table-striped table-responsive-md">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Fan Size</th>
-                            <th>Connector Type</th>
-                            <th>Cooling Type</th>
-                            <th>Socket Compatibilty</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    	<tr>
-                    		<td th:text="*{cPUCooler.id}"></td>
-	                        <td th:text="*{cPUCooler.name}"></td>
-	                        <td th:text="*{cPUCooler.fanSize}"></td>
-	                        <td th:text="*{cPUCooler.connectorType}"></td>
-	                        <td th:text="*{cPUCooler.coolingType}"></td>
-	                        <td th:text="*{cPUCooler.socketCompatibility}"></td>
-	                        <td th:text="*{cPUCooler.price}"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                
                 <table border="1" class="table table-striped table-responsive-md">
                     <thead>
                         <tr>

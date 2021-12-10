@@ -10,13 +10,13 @@
     <body>
         <div class="container-fluid my-2">
             <h1>Computer Building Company - Edit CPU Cooler</h1>
-            <h2>Edit the CPU Cooler.</h2>
+            <h2>Edit the CPU cooler.</h2>
             <form th:object="${cPUCooler}" th:action="@{/cpu_coolers/update_cpu_cooler}" method="POST">
                 <input type="hidden" th:field="*{id}">
-                <input class="form-control mb-4 col-4" type="text" name="name" placeholder="CPU Name" size="128" th:field="*{name}">
+                <input class="form-control mb-4 col-4" type="text" name="name" placeholder="CPU Cooler Name" size="128" th:field="*{name}">
                 <input class="form-control mb-4 col-4" type="text" name="fanSize" placeholder="Fan Size" size="16" th:field="*{fanSize}">
                 <input class="form-control mb-4 col-4" type="text" name="connectorType" placeholder="Connector Type" size="16" th:field="*{connectorType}">
-                <input class="form-control mb-4 col-4" type="text" name="coolingType" placeholder="Cooling type" size="16" th:field="*{coolingType}">
+                <input class="form-control mb-4 col-4" type="text" name="coolingType" placeholder="Cooling Type" size="16" th:field="*{coolingType}">
                 <input class="form-control mb-4 col-4" type="text" name="socketCompatibility" placeholder="Socket Compatibility" size="16" th:field="*{socketCompatibility}">
                 <input class="form-control mb-4 col-4" type="text" name="price" placeholder="Price" size="8" th:field="*{price}">
                 <button class="btn btn-info col-2" type="submit">Update CPU Cooler</button>

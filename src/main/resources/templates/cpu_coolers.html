@@ -12,13 +12,13 @@
             <h1>CPU Coolers</h1>
             <a th:href="@{/}" class="btn btn-outline-primary btn-sm mb-3">View quote requests</a>
             <a th:href="@{/motherboards}" class="btn btn-outline-secondary btn-sm mb-3">Motherboards</a>
-            <a th:href="@{/cpus}" class="btn btn-secondary btn-sm mb-3">CPU</a>
+            <a th:href="@{/cpus}" class="btn btn-outline-secondary btn-sm mb-3">CPU</a>
+            <a th:href="@{/cpu_coolers/add_cpu_cooler}" class="btn btn-secondary btn-sm mb-3">Add a CPU Cooler</a>
+            <a th:href="@{/thermal_compounds}" class="btn btn-outline-secondary btn-sm mb-3">Thermal Compounds</a>
             <a th:href="@{/ram}" class="btn btn-outline-secondary btn-sm mb-3">RAM</a>
             <a th:href="@{/gpus}" class="btn btn-outline-secondary btn-sm mb-3">GPUs</a>
-            <a th:href="@{/thermal_compounds}" class="btn btn-outline-secondary btn-sm mb-3">Thermal Compounds</a>
             <a th:href="@{/storage_devices}" class="btn btn-outline-secondary btn-sm mb-3">Storage Devices</a>
             <a th:href="@{/sound_cards}" class="btn btn-outline-secondary btn-sm mb-3">Sound Cards</a>
-            <a th:href="@{/cpu_coolers/add_cpu_cooler}" class="btn btn-outline-secondary btn-sm mb-3">Add a CPU Cooler</a>
             <a th:href="@{/psus}" class="btn btn-outline-secondary btn-sm mb-3">PSUs</a>
             <a th:href="@{/monitors}" class="btn btn-outline-secondary btn-sm mb-3">Monitors</a>
             <a th:href="@{/keyboards}" class="btn btn-outline-secondary btn-sm mb-3">Keyboards</a>
@@ -42,7 +42,7 @@
                             <a th:href="@{'/cpu_coolers/page/' + ${cPUCoolerPage} + '?sortField=coolingType&sortDirection=' + ${reverseSortDirection}}">Cooling Type</a>
                         </th>
                         <th>
-                            <a th:href="@{'/cpu_coolers/page/' + ${cPUCoolerPage} + '?sortField=socketCompatability&sortDirection=' + ${reverseSortDirection}}">Socket Compatability</a>
+                            <a th:href="@{'/cpu_coolers/page/' + ${cPUCoolerPage} + '?sortField=socketCompatibility&sortDirection=' + ${reverseSortDirection}}">Socket Compatibility</a>
                         </th>
                         <th>
                             <a th:href="@{'/cpu_coolers/page/' + ${cPUCoolerPage} + '?sortField=price&sortDirection=' + ${reverseSortDirection}}">Price</a>
@@ -73,16 +73,16 @@
                     </div>
                     <div class="col-sm-1">
                         <span th:each="i: ${#numbers.sequence(1, totalCPUCoolerPages)}">
-                            <a th:if="${cPUCoolerPage != i}" th:href="@{'/cpu_cooler/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">[[${i}]]</a>
+                            <a th:if="${cPUCoolerPage != i}" th:href="@{'/cpu_coolers/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">[[${i}]]</a>
                             <span th:unless="${cPUCoolerPage != i}">[[${i}]]</span>&nbsp;&nbsp;
                         </span>
                     </div>
                     <div class="col-sm-1">
-                        <a th:if="${cPUCoolerPage < totalCPUCoolerPages}" th:href="@{'/cpu_cooler/page/' + ${cPUCoolerPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Next</a>
+                        <a th:if="${cPUCoolerPage < totalCPUCoolerPages}" th:href="@{'/cpu_coolers/page/' + ${cPUCoolerPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Next</a>
                         <span th:unless="${cPUCoolerPage < totalCPUCoolerPages}">Next</span>
                     </div>
                     <div class="col-sm-1">
-                        <a th:if="${cPUCoolerPage < totalCPUCoolerPages}" th:href="@{'/cpu_cooler/page/' + ${totalCPUCoolerPages} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Last</a>
+                        <a th:if="${cPUCoolerPage < totalCPUCoolerPages}" th:href="@{'/cpu_coolers/page/' + ${totalCPUCoolerPages} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Last</a>
                         <span th:unless="${cPUCoolerPage < totalCPUCoolerPages}">Last</span>
                     </div>
                 </div>
