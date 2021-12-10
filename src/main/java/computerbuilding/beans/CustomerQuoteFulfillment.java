@@ -76,6 +76,11 @@ public class CustomerQuoteFulfillment {
 	@ManyToOne(targetEntity = SoundCard.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "sound_card_id_fk", referencedColumnName = "sound_card_id")
 	private SoundCard soundCard;
+	@NonNull
+	@ManyToOne(targetEntity = CPUCooler.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "cpu_cooler_id_fk", referencedColumnName = "cpu_cooler_id")
+	private CPUCooler cPUCooler;
+	
 	@Column(name = "total_cost")
 	private double totalCost;
 	@Column(name = "customer_confirmation")

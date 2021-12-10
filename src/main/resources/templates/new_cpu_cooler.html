@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="#">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Computer Building Company - Add CPU Cooler</title>
+    </head>
+    <body>
+        <div class="container-fluid my-2">
+            <h1>Computer Building Company - Add CPU Cooler</h1>
+            <h2>Enter a new CPU Cooler to use for the customers' builds.</h2>
+            <form th:object="${cPUCooler}" th:action="@{/cpu_coolers/update_cpu_cooler}" method="POST">
+                <input class="form-control mb-4 col-4" type="text" name="name" placeholder="CPU Name" size="128" th:field="*{name}">
+                <input class="form-control mb-4 col-4" type="text" name="fanSize" placeholder="Fan Size" size="16" th:field="*{fanSize}">
+                <input class="form-control mb-4 col-4" type="text" name="connectorType" placeholder="Connector Type" size="16" th:field="*{connectorType}">
+                <input class="form-control mb-4 col-4" type="text" name="coolingType" placeholder="Cooling type" size="16" th:field="*{coolingType}">
+                <input class="form-control mb-4 col-4" type="text" name="socketCompatibility" placeholder="Socket Compatibility" size="16" th:field="*{socketCompatibility}">
+                <input class="form-control mb-4 col-4" type="text" name="price" placeholder="Price" size="8" th:field="*{price}">
+                <button class="btn btn-info col-2" type="submit">Submit CPU Cooler</button>
+            </form>
+            <a th:href="@{/cpu_cooler}">View CPU Coolers</a>
+        </div>
+    </body>
+</html>

@@ -214,6 +214,32 @@
                         </tr>
                     </tbody>
                 </table>
+                
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Name</th>
+                            <th>Fan Size</th>
+                            <th>Connector Type</th>
+                            <th>Cooling Type</th>
+                            <th>Socket Compatibilty</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="cPUCooler: ${cPUCoolers}">
+                            <td><input type="radio" name="cPUCoolers" th:field="*{cPUCooler.id}" th:value="${cPUCooler.id}"></td>
+	                        <td th:text="${cPUCooler.name}"></td>
+	                        <td th:text="${cPUCooler.fanSize}"></td>
+	                        <td th:text="${cPUCooler.connectorType}"></td>
+	                        <td th:text="${cPUCooler.coolingType}"></td>
+	                        <td th:text="${cPUCooler.socketCompatibility}"></td>
+	                        <td th:text="${cPUCooler.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
                 <table border="1" class="table table-striped table-responsive-md">
                     <thead>
                         <tr>
