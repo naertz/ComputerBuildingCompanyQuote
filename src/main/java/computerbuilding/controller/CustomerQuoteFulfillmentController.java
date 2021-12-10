@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import computerbuilding.beans.CustomerQuoteFulfillment;
+import computerbuilding.service.CPUCoolerServiceInterface;
 import computerbuilding.service.CPUServiceInterface;
 import computerbuilding.service.CustomerQuoteFulfillmentServiceInterface;
 import computerbuilding.service.CustomerQuoteRequestServiceInterface;
@@ -57,6 +58,8 @@ public class CustomerQuoteFulfillmentController {
 	KeyboardServiceInterface keyboardService;
 	@Autowired
 	SoundCardServiceInterface soundCardService;
+	@Autowired
+	CPUCoolerServiceInterface cPUCoolerService;
 	
 
 	@GetMapping("/fulfillments")
@@ -79,6 +82,7 @@ public class CustomerQuoteFulfillmentController {
 		model.addAttribute("monitors", monitorService.getAllMonitors());
 		model.addAttribute("keyboards", keyboardService.getAllKeyboards());
 		model.addAttribute("soundCard", soundCardService.getAllSoundCards());
+		model.addAttribute("cPUCoolers", cPUCoolerService.getAllCPUCoolers());
 		return "new_fulfillment";
 	}
 
@@ -110,6 +114,7 @@ public class CustomerQuoteFulfillmentController {
 		model.addAttribute("monitors", monitorService.getAllMonitors());
 		model.addAttribute("keyboards", keyboardService.getAllKeyboards());
 		model.addAttribute("soundCard", soundCardService.getAllSoundCards());
+		model.addAttribute("cPUCoolers", cPUCoolerService.getAllCPUCoolers());
 		return "edit_fulfillment";
 	}
 
