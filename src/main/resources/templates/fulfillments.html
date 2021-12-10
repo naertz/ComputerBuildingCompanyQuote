@@ -120,7 +120,7 @@
                     </div>
                     <div class="col-sm-1">
                         <a th:if="${fulfillmentPage < totalFulfillmentPages}" th:href="@{'/fulfillments/page/' + ${fulfillmentPage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Next</a>
-                        <span th:unless="${requestPage < totalRequestPages}">Next</span>
+                        <span th:unless="${fulfillmentPage < totalFulfillmentPages}">Next</span>
                     </div>
                     <div class="col-sm-1">
                         <a th:if="${fulfillmentPage < totalFulfillmentPages}" th:href="@{'/fulfillments/page/' + ${totalFulfillmentPages} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Last</a>
