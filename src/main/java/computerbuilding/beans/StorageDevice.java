@@ -36,7 +36,7 @@ public class StorageDevice {
 	@Column(name = "brand")
 	private String brand;
 	@Column(name = "capacity")
-	private int capacity;
+	private double capacity;
 	@Column(name = "read_speed")
 	private int readSpeed;
 	@Column(name = "write_speed")

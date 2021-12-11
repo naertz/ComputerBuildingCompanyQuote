@@ -34,7 +34,7 @@ public class CPUCooler {
 	private String name;
 	@NonNull
 	@Column(name = "fan_size")
-	private String fanSize;
+	private int fanSize;
 	@NonNull
 	@Column(name = "connector_type")
 	private String connectorType;
