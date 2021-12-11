@@ -32,8 +32,9 @@ public class CPUCooler {
 	@NonNull
 	@Column(name = "name")
 	private String name;
+	@NonNull
 	@Column(name = "fan_size")
-	private int fanSize;
+	private Integer fanSize;
 	@NonNull
 	@Column(name = "connector_type")
 	private String connectorType;
@@ -43,8 +44,9 @@ public class CPUCooler {
 	@NonNull
 	@Column(name = "socket_compatibility")
 	private String socketCompatibility;
+	@NonNull
 	@Column(name = "price")
-	private double price;
+	private Double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "cPUCooler", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

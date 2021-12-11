@@ -49,10 +49,12 @@ public class PSU {
 	@NonNull
 	@Column(name = "efficiency_rating")
 	private String efficiencyRating;
+	@NonNull
 	@Column(name = "wattage")
-	private int wattage;
+	private Integer wattage;
+	@NonNull
 	@Column(name = "price")
-	private double price;
+	private Double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "pSU", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

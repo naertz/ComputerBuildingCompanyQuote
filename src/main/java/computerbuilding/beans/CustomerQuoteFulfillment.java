@@ -84,8 +84,9 @@ public class CustomerQuoteFulfillment {
 	@ManyToOne(targetEntity = Mouse.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "mouse_id_fk", referencedColumnName = "mouse_id")
 	private Mouse mouse;
+	@NonNull
 	@Column(name = "total_cost")
-	private double totalCost;
+	private Double totalCost;
 	@Column(name = "customer_confirmation")
 	private Boolean customerConfirmation;
 }

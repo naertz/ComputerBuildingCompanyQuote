@@ -35,16 +35,21 @@ public class StorageDevice {
 	@NonNull
 	@Column(name = "brand")
 	private String brand;
+	@NonNull
 	@Column(name = "capacity")
-	private double capacity;
+	private Double capacity;
+	@NonNull
 	@Column(name = "read_speed")
-	private int readSpeed;
+	private Integer readSpeed;
+	@NonNull
 	@Column(name = "write_speed")
-	private int writeSpeed;
+	private Integer writeSpeed;
+	@NonNull
 	@Column(name = "rpm")
-	private double rPM;
+	private Double rPM;
+	@NonNull
 	@Column(name = "price")
-	private double price;
+	private Double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "storageDevice", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

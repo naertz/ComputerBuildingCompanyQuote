@@ -43,14 +43,18 @@ public class CPU {
 	@NonNull
 	@Column(name = "cpu_socket")
 	private String cPUSocket;
+	@NonNull
 	@Column(name = "core_count")
-	private int coreCount;
+	private Integer coreCount;
+	@NonNull
 	@Column(name = "thread_count")
-	private int threadCount;
+	private Integer threadCount;
+	@NonNull
 	@Column(name = "cpu_speed")
-	private double cPUSpeed;
+	private Double cPUSpeed;
+	@NonNull
 	@Column(name = "price")
-	private double price;
+	private Double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "cPU", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

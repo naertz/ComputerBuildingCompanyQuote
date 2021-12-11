@@ -43,14 +43,18 @@ public class GPU {
 	@NonNull
 	@Column(name = "memory_type")
 	private String memoryType;
+	@NonNull
 	@Column(name = "video_memory")
-	private int videoMemory;
+	private Integer videoMemory;
+	@NonNull
 	@Column(name = "pci_express")
-	private int pCIExpress;
+	private Integer pCIExpress;
+	@NonNull
 	@Column(name = "clock_speed")
-	private double clockSpeed;
+	private Double clockSpeed;
+	@NonNull
 	@Column(name = "price")
-	private double price;
+	private Double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "gPU", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

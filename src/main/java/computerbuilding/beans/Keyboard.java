@@ -55,10 +55,12 @@ public class Keyboard {
 	@NonNull
 	@Column(name = "switch_type")
 	private String switchType;
+	@NonNull
 	@Column(name = "size_percent")
-	private int sizePercent;
+	private Integer sizePercent;
+	@NonNull
 	@Column(name = "price")
-	private double price;
+	private Double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "keyboard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

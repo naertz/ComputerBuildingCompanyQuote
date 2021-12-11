@@ -46,18 +46,24 @@ public class Monitor {
 	@NonNull
 	@Column(name = "frame_sync")
 	private String frameSync;
+	@NonNull
 	@Column(name = "screen_size")
-	private double screenSize;
+	private Double screenSize;
+	@NonNull
 	@Column(name = "resolution_width")
-	private int resolutionWidth;
+	private Integer resolutionWidth;
+	@NonNull
 	@Column(name = "resolution_height")
-	private int resolutionHeight;
+	private Integer resolutionHeight;
+	@NonNull
 	@Column(name = "refresh_rate")
-	private int refreshRate;
+	private Integer refreshRate;
+	@NonNull
 	@Column(name = "response_time")
-	private double responseTime;
+	private Double responseTime;
+	@NonNull
 	@Column(name = "price")
-	private double price;
+	private Double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "monitor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

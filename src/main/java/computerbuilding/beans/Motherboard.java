@@ -46,16 +46,21 @@ public class Motherboard {
 	@NonNull
 	@Column(name = "chipset")
 	private String chipset;
+	@NonNull
 	@Column(name = "memory_slots")
-	private int memorySlots;
+	private Integer memorySlots;
+	@NonNull
 	@Column(name = "pcie_slots")
-	private int pCIESlots;
+	private Integer pCIESlots;
+	@NonNull
 	@Column(name = "sata_ports")
-	private int sATAPorts;
+	private Integer sATAPorts;
+	@NonNull
 	@Column(name = "m2_slots")
-	private int m2Slots;
+	private Integer m2Slots;
+	@NonNull
 	@Column(name = "price")
-	private double price;
+	private Double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "motherboard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

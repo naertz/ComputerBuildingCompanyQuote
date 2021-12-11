@@ -52,10 +52,12 @@ public class Mouse {
 	@NonNull
 	@Column(name = "hand_orientation")
 	private String handOrientation;
+	@NonNull
 	@Column(name = "maximum_dpi")
-	private int maximumDPI;
+	private Integer maximumDPI;
+	@NonNull
 	@Column(name = "price")
-	private double price;
+	private Double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "mouse", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

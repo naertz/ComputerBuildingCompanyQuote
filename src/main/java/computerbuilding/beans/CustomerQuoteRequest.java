@@ -48,8 +48,9 @@ public class CustomerQuoteRequest {
 	@NonNull
 	@Column(name = "computer_needs_description")
 	private String computerNeedsDescription;
+	@NonNull
 	@Column(name = "budget")
-	private double budget;
+	private Double budget;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "customerQuoteRequest", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }
