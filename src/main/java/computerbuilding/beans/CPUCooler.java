@@ -32,7 +32,6 @@ public class CPUCooler {
 	@NonNull
 	@Column(name = "name")
 	private String name;
-	@NonNull
 	@Column(name = "fan_size")
 	private int fanSize;
 	@NonNull

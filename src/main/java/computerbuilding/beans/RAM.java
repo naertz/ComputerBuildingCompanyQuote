@@ -43,7 +43,6 @@ public class RAM {
 	private String capacity;
 	@Column(name = "sticks")
 	private int sticks;
-	@NonNull
 	@Column(name = "latency")
 	private double latency;
 	@Column(name = "price")
