@@ -49,6 +49,9 @@
                             <a th:href="@{'/mice/page/' + ${mousePage} + '?sortField=handOrientation&sortDirection=' + ${reverseSortDirection}}">Hand Orientation</a>
                         </th>
                         <th>
+                            <a th:href="@{'/mice/page/' + ${mousePage} + '?sortField=maximumDPI&sortDirection=' + ${reverseSortDirection}}">Maximum DPI</a>
+                        </th>
+                        <th>
                             <a th:href="@{'/mice/page/' + ${mousePage} + '?sortField=price&sortDirection=' + ${reverseSortDirection}}">Price</a>
                         </th>
                         <th>Actions</th>
@@ -63,6 +66,7 @@
                         <td th:text="${mouse.trackingMethod}"></td>
                         <td th:text="${mouse.connectionType}"></td>
                         <td th:text="${mouse.handOrientation}"></td>
+                        <td th:text="${mouse.maximumDPI}"></td>
                         <td th:text="${mouse.price}"></td>
                         <td>
                             <a th:href="@{/mice/edit_mouse/{id}(id=${mouse.id})}" class="btn btn-primary">Edit</a>
