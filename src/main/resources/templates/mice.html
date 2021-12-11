@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="#">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Computer Building Company - Mouse List</title>
+    </head>
+    <body>
+        <div class="container-fluid my-2">
+            <h1>Mice</h1>
+            <a th:href="@{/}" class="btn btn-outline-primary btn-sm mb-3">View quote requests</a>
+            <a th:href="@{/motherboards}" class="btn btn-outline-secondary btn-sm mb-3">Motherboards</a>
+            <a th:href="@{/cpus}" class="btn btn-outline-secondary btn-sm mb-3">CPUs</a>
+            <a th:href="@{/cpu_coolers}" class="btn btn-outline-secondary btn-sm mb-3">CPU Coolers</a>
+            <a th:href="@{/thermal_compounds}" class="btn btn-outline-secondary btn-sm mb-3">Thermal Compounds</a>
+            <a th:href="@{/ram}" class="btn btn-outline-secondary btn-sm mb-3">RAM</a>
+            <a th:href="@{/gpus}" class="btn btn-outline-secondary btn-sm mb-3">GPUs</a>
+            <a th:href="@{/storage_devices}" class="btn btn-outline-secondary btn-sm mb-3">Storage Devices</a>
+            <a th:href="@{/sound_cards}" class="btn btn-outline-secondary btn-sm mb-3">Sound Cards</a>
+            <a th:href="@{/psus}" class="btn btn-outline-secondary btn-sm mb-3">PSUs</a>
+            <a th:href="@{/monitors}" class="btn btn-outline-secondary btn-sm mb-3">Monitors</a>
+            <a th:href="@{/keyboards}" class="btn btn-outline-secondary btn-sm mb-3">Keyboards</a>
+            <a th:href="@{/mice/add_mouse}" class="btn btn-secondary btn-sm mb-3">Add a mouse</a>
+            <a th:href="@{/fulfillments}" class="btn btn-outline-primary btn-sm mb-3">View quote fulfillments</a>
+            <table border="1" class="table table-striped table-responsive-md">
+                <thead>
+                    <tr>
+                        <th>
+                            <a th:href="@{'/mice/page/' + ${mousePage} + '?sortField=id&sortDirection=' + ${reverseSortDirection}}">ID</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/mice/page/' + ${mousePage} + '?sortField=name&sortDirection=' + ${reverseSortDirection}}">Name</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/mice/page/' + ${mousePage} + '?sortField=brand&sortDirection=' + ${reverseSortDirection}}">Brand</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/mice/page/' + ${mousePage} + '?sortField=color&sortDirection=' + ${reverseSortDirection}}">Color</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/mice/page/' + ${mousePage} + '?sortField=trackingMethod&sortDirection=' + ${reverseSortDirection}}">Tracking Method</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/mice/page/' + ${mousePage} + '?sortField=connectionType&sortDirection=' + ${reverseSortDirection}}">Connection Type</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/mice/page/' + ${mousePage} + '?sortField=handOrientation&sortDirection=' + ${reverseSortDirection}}">Hand Orientation</a>
+                        </th>
+                        <th>
+                            <a th:href="@{'/mice/page/' + ${mousePage} + '?sortField=price&sortDirection=' + ${reverseSortDirection}}">Price</a>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="mouse: ${mice}">
+                        <td th:text="${mouse.id}"></td>
+                        <td th:text="${mouse.name}"></td>
+                        <td th:text="${mouse.brand}"></td>
+                        <td th:text="${mouse.color}"></td>
+                        <td th:text="${mouse.trackingMethod}"></td>
+                        <td th:text="${mouse.connectionType}"></td>
+                        <td th:text="${mouse.handOrientation}"></td>
+                        <td th:text="${mouse.price}"></td>
+                        <td>
+                            <a th:href="@{/mice/edit_mouse/{id}(id=${mouse.id})}" class="btn btn-primary">Edit</a>
+                            <a th:href="@{/mice/delete_mouse/{id}(id=${mouse.id})}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div th:if="${totalMousePages > 1}">
+                <div class="row col-sm-10">
+                    <div class="col-sm-2">
+                        Total Mice: [[${totalMouseItems}]]
+                    </div>
+                    <div class="col-sm-1">
+                        <span th:each="i: ${#numbers.sequence(1, totalMousePages)}">
+                            <a th:if="${mousePage != i}" th:href="@{'/mice/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">[[${i}]]</a>
+                            <span th:unless="${mousePage != i}">[[${i}]]</span>&nbsp;&nbsp;
+                        </span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${mousePage < totalMousePages}" th:href="@{'/mice/page/' + ${mousePage + 1} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Next</a>
+                        <span th:unless="${mousePage < totalMousePages}">Next</span>
+                    </div>
+                    <div class="col-sm-1">
+                        <a th:if="${mousePage < totalMousePages}" th:href="@{'/mice/page/' + ${totalMousePages} + '?sortField=' + ${sortField} + '&sortDirection=' + ${sortDirection}}">Last</a>
+                        <span th:unless="${mousePage < totalMousePages}">Last</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

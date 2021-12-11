@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="#">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <title>Computer Building Company - Edit Mouse</title>
+    </head>
+    <body>
+        <div class="container-fluid my-2">
+            <h1>Computer Building Company - Edit Mouse</h1>
+            <h2>Edit the motherboard.</h2>
+            <form th:object="${motherboard}" th:action="@{/mice/update_motherboard}" method="POST">
+                <input type="hidden" th:field="*{id}">
+                <input class="form-control mb-4 col-4" type="text" name="name" placeholder="Mouse Name" size="128" th:field="*{name}">
+                <input class="form-control mb-4 col-4" type="text" name="brand" placeholder="Brand" size="32" th:field="*{brand}">
+                <input class="form-control mb-4 col-4" type="text" name="color" placeholder="Color" size="16" th:field="*{color}">
+                <input class="form-control mb-4 col-4" type="text" name="trackingMethod" placeholder="Tracking Method" size="16" th:field="*{trackingMethod}">
+                <input class="form-control mb-4 col-4" type="text" name="connectionType" placeholder="Connection Type" size="16" th:field="*{connectionType}">
+                <input class="form-control mb-4 col-4" type="text" name="handOrientation" placeholder="Hand Orientation" size="16" th:field="*{handOrientation}">
+                <input class="form-control mb-4 col-4" type="text" name="price" placeholder="Price" size="8" th:field="*{price}">
+                <button class="btn btn-info col-2" type="submit">Update Mouse</button>
+            </form>
+            <a th:href="@{/mice}">View Mice</a>
+        </div>
+    </body>
+</html>

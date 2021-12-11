@@ -327,6 +327,32 @@
                         </tr>
                     </tbody>
                 </table>
+                <table border="1" class="table table-striped table-responsive-md">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Name</th>
+                            <th>Brand</th>
+                            <th>Color</th>
+                            <th>Tracking Method</th>
+                            <th>Connection Type</th>
+                            <th>Hand Orientation</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="mouse: ${mice}">
+                            <td><input type="radio" name="mice" th:field="*{mouse.id}" th:value="${mouse.id}"></td>
+                            <td th:text="${mouse.name}"></td>
+                            <td th:text="${mouse.brand}"></td>
+                            <td th:text="${mouse.color}"></td>
+                            <td th:text="${mouse.trackingMethod}"></td>
+                            <td th:text="${mouse.connectionType}"></td>
+                            <td th:text="${mouse.handOrientation}"></td>
+                            <td th:text="${mouse.price}"></td>
+                        </tr>
+                    </tbody>
+                </table>
                 <input class="form-control mb-4 col-4" type="text" name="totalCost" placeholder="Total Cost" size="8" th:field="*{totalCost}">
                 <button class="btn btn-info col-2" type="submit">Update Quote Fulfillment</button>
             </form>

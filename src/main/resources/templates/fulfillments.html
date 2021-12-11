@@ -22,6 +22,7 @@
             <a th:href="@{/psus}" class="btn btn-outline-secondary btn-sm mb-3">PSUs</a>
             <a th:href="@{/monitors}" class="btn btn-outline-secondary btn-sm mb-3">Monitors</a>
             <a th:href="@{/keyboards}" class="btn btn-outline-secondary btn-sm mb-3">Keyboards</a>
+            <a th:href="@{/mice}" class="btn btn-outline-secondary btn-sm mb-3">Mice</a>
             <a th:href="@{/fulfillments/create_fulfillment}" class="btn btn-primary btn-sm mb-3">Create a new quote fulfillment</a>
             <table border="1" class="table table-striped table-responsive-md">
                 <thead>
@@ -72,6 +73,9 @@
                             <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=keyboard.name&sortDirection=' + ${reverseSortDirection}}">Keyboard</a>
                         </th>
                         <th>
+                            <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=mouse.name&sortDirection=' + ${reverseSortDirection}}">Mouse</a>
+                        </th>
+                        <th>
                             <a th:href="@{'/fulfillments/page/' + ${fulfillmentPage} + '?sortField=totalCost&sortDirection=' + ${reverseSortDirection}}">Total Cost</a>
                         </th>
                         <th>
@@ -97,6 +101,7 @@
                         <td th:text="${customerQuoteFulfillment.pSU.name}"></td>
                         <td th:text="${customerQuoteFulfillment.monitor.name}"></td>
                         <td th:text="${customerQuoteFulfillment.keyboard.name}"></td>
+                        <td th:text="${customerQuoteFulfillment.mouse.name}"></td>
                         <td th:text="${customerQuoteFulfillment.totalCost}"></td>
                         <td th:text="${customerQuoteFulfillment.customerConfirmation}"></td>
                         <td>

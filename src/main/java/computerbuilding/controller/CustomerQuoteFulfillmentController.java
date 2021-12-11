@@ -26,6 +26,7 @@ import computerbuilding.service.GPUServiceInterface;
 import computerbuilding.service.KeyboardServiceInterface;
 import computerbuilding.service.MonitorServiceInterface;
 import computerbuilding.service.MotherboardServiceInterface;
+import computerbuilding.service.MouseServiceInterface;
 import computerbuilding.service.PSUServiceInterface;
 import computerbuilding.service.RAMServiceInterface;
 import computerbuilding.service.SoundCardServiceInterface;
@@ -60,6 +61,8 @@ public class CustomerQuoteFulfillmentController {
 	MonitorServiceInterface monitorService;
 	@Autowired
 	KeyboardServiceInterface keyboardService;
+	@Autowired
+	MouseServiceInterface mouseService;
 
 	@GetMapping("/fulfillments")
 	public String viewFulfillmentsPage(final Model model) {
@@ -82,6 +85,7 @@ public class CustomerQuoteFulfillmentController {
 		model.addAttribute("pSUs", pSUService.getAllPSUs());
 		model.addAttribute("monitors", monitorService.getAllMonitors());
 		model.addAttribute("keyboards", keyboardService.getAllKeyboards());
+		model.addAttribute("mice", mouseService.getAllMice());
 		return "new_fulfillment";
 	}
 
@@ -114,6 +118,7 @@ public class CustomerQuoteFulfillmentController {
 		model.addAttribute("pSUs", pSUService.getAllPSUs());
 		model.addAttribute("monitors", monitorService.getAllMonitors());
 		model.addAttribute("keyboards", keyboardService.getAllKeyboards());
+		model.addAttribute("mice", mouseService.getAllMice());
 		return "edit_fulfillment";
 	}
 
