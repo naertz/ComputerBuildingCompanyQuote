@@ -10,8 +10,8 @@
     <body>
         <div class="container-fluid my-2">
             <h1>Computer Building Company - Edit Mouse</h1>
-            <h2>Edit the motherboard.</h2>
-            <form th:object="${motherboard}" th:action="@{/mice/update_motherboard}" method="POST">
+            <h2>Edit the mouse.</h2>
+            <form th:object="${mouse}" th:action="@{/mice/update_mouse}" method="POST">
                 <input type="hidden" th:field="*{id}">
                 <input class="form-control mb-4 col-4" type="text" name="name" placeholder="Mouse Name" size="128" th:field="*{name}">
                 <input class="form-control mb-4 col-4" type="text" name="brand" placeholder="Brand" size="32" th:field="*{brand}">
