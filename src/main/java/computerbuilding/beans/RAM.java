@@ -47,7 +47,7 @@ public class RAM {
 	@Column(name = "latency")
 	private String latency;
 	@Column(name = "price")
-	private float price;
+	private double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "rAM", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

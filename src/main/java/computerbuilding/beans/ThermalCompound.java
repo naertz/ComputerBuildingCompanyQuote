@@ -39,7 +39,7 @@ public class ThermalCompound {
 	@Column(name = "material_base")
 	private String materialBase;
 	@Column(name = "price")
-	private float price;
+	private double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "thermalCompound", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

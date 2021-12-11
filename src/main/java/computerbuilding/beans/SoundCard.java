@@ -39,9 +39,9 @@ public class SoundCard {
 	@Column(name = "max_db")
 	private int maxDb;
 	@Column(name = "max_channels")
-	private float maxChannels;
+	private double maxChannels;
 	@Column(name = "price")
-	private float price;
+	private double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "soundCard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }

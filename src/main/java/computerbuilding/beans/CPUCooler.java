@@ -45,7 +45,7 @@ public class CPUCooler {
 	@Column(name = "socket_compatibility")
 	private String socketCompatibility;
 	@Column(name = "price")
-	private float price;
+	private double price;
 	@OneToMany(targetEntity = CustomerQuoteFulfillment.class, mappedBy = "cPUCooler", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CustomerQuoteFulfillment> customerQuoteFulfillments;
 }
